@@ -22,7 +22,7 @@ Hasura cluster
 
 A Hasura cluster is a `Kubernetes <https://kubernetes.io>`_ cluster, with
 Hasura backend APIs and some internal microservices (like Postgres, Nginx etc.)
-installed on it.  This Kuberenetes cluster is usually runs on a cloud
+installed on it.  This Kubernetes cluster is usually runs on a cloud
 infrastructure like Google Cloud, Azure or AWS.
 
 All Hasura clusters are free for development purposes or for hobby projects.
@@ -69,14 +69,38 @@ To add a cluster to a project we use:
   INFO remote "hasura" added: [ssh://hasura@alarming52.hasura-app.io:22/~/git/alarming52]
   INFO pre-push hook added
 
+  $ hasura ssh-key add -c hasura
+
 
 The ``-c`` flags tells to create a alias ``hasura`` the for the cluster. This
 name can be anything. We can then use this alias in various other commands
 including git push.
 
+.. note::
+
+  If you already have a cluster added with an alias, say ``hasura``, delete its entry from ``clusters.yaml`` before trying to add another cluster with the same alias.
+
+
+Your clusters
+-------------
+To get the list of your clusters, use the ``hasura`` CLI.
+
+.. code-block:: bash
+
+  $ hasura clusters list
+
+  INFO Getting clusters list...
+  Clusters available In your account:
+  NO   NAME         OWNER
+  1    alarming52   you
+
+  Clusters added to this project:
+  NO   NAME         ALIAS
+  1    alarming52   hasura
+
 
 Deleting a cluster
-----------------
+------------------
 To delete a cluster, use the ``hasura`` CLI.
 
 .. code-block:: bash

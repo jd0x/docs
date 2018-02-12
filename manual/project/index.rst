@@ -46,11 +46,11 @@ project from the hub and use that as a starting point for your new project.
 .. admonition:: Note
 
    ``hasura/hello-world`` is another project that contains a few database
-   migrations, some sample data and even a sample mircoservice to get started quickly.
+   migrations, some sample data and even a sample microservice to get started quickly.
 
 .. note::
 
-  This command automatically intializes a git repository
+  This command automatically initializes a git repository
 
 
 Files and directories
@@ -108,7 +108,6 @@ This file contains some metadata about the project, namely a name, description, 
     - <video_link_1>
   platformVersion: v0.15.3
 
-
 * `clusters.yaml`
 
 Info about the clusters added to this project can be found in this file. Each
@@ -122,9 +121,9 @@ holding custom variables that you can define.
 
 .. code-block:: yaml
 
-  - name: h34-ambitious93-stg
+  - name: ambitious93
     alias: hasura
-    kubeContext: h34-ambitious93-stg
+    kubeContext: ambitious93
     config:
       configmap: controller-conf
       namespace: hasura
@@ -165,4 +164,7 @@ holding custom variables that you can define.
   :maxdepth: 1
   :titlesonly:
 
+  collaboration
+  using-templates
   secrets
+  directory-structure/index

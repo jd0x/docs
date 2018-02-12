@@ -4,14 +4,12 @@
 
 .. _deploy-host-webapps:
 
-==============================
-Developing and hosting webapps
-==============================
+==========================
+Developing webapps or APIs
+==========================
 
-This section will attempt to discuss everything you need to know about developing and hosting webapps on Hasura.
-
-Quickstarts
------------
+Adding a microservice to an existing Hasura project
+---------------------------------------------------
 
 Hasura provides a very simple and powerful system to develop, deploy and host your custom webapps easily. This is facilitated by the `Hasura Hub <https://hasura.io/hub>`_, a user contributed repository of working projects that are just one command away from a running app.
 
@@ -47,7 +45,7 @@ This command will do the following:
 5. Add you SSH key to the cluster
    
 
-Getting cluster infromation
+Getting cluster information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Every hasura project is run on a Hasura cluster. To get details about the cluster this project is running on:
@@ -61,9 +59,9 @@ This will give you cluster status, which looks like:
 .. code:: bash
 
           INFO Status:
-          Cluster Name:       h34-excise98-stg
+          Cluster Name:       excise98
           Cluster Alias:      hasura
-          Kube Context:       h34-excise98-stg
+          Kube Context:       excise98
           Platform Version:   v0.15.3
           Cluster State:      Synced
 
@@ -80,7 +78,7 @@ To deploy your app:
     $ git commit -m "Initial Commit"
     $ git push hasura master
 
-Once the above commands are executed successfully, head over to ``https://app.cluster-name.hasura-app.io`` (in this case, ``https://app.h34-excise98-stg.hasura-app.io``) to view your flask app.
+Once the above commands are executed successfully, head over to ``https://app.cluster-name.hasura-app.io`` (in this case, ``https://app.excise98.hasura-app.io``) to view your flask app.
 
 API Console
 """""""""""
@@ -174,13 +172,41 @@ So now the cluster status will show:
 
 This means that your custom microservice will be available at the url ``https://my-service.cluster-name.hasura-app.io``. Visiting this url now will show you a "Hello World!" message.
 
+Running your app on other than port 8080
+----------------------------------------
+
+Your microservices on hasura cluster runs on port 8080 by default. To run your app on hasura cluster, you can do the followings.
+
+1. Create new microservice
+
+You can simply run the command while generating a new microservice:
+
+.. code:: bash
+
+    $ hasura microservice create <name-of-ms>  --port <port number>
+
+2. For Existing microservice running on port 8080
+
+If you already have an app on a existing microservice ( which is running on port 8080), you have to  assign values of containerPort and targetPort to <port-number> in your ``/microservice/<microservice-name>/k8s.yaml`` file:
+
+``containerPort: <port-number>``
+
+``targetPort: <port-number>``
+
+To apply this configuration on your cluster ``git commit`` and ``git push`` the project directory:
+
+.. code:: bash
+
+    $ git commit -m "<microservice-name> port changed"
+    $ git push hasura master
+
 
 Contacting internal URLs on microservices
 -----------------------------------------
 
 The Hasura BaaS APIs can be contacted through two URLs, or endpoints.
 
-1. The external URL (external endpoint) - this is of the form ``htpps://service-name.cluster-name.hasura-app.io``
+1. The external URL (external endpoint) - this is of the form ``https://service-name.cluster-name.hasura-app.io``
 
 This is a https url, protected by ssl certificates that Hasura generates through LetsEncrypt. The authentication for this is handled by the gateway, which converts the Authorization token sent along with the query into two headers, the ``X-Hasura-User-Id`` and the ``X-Hasura-Roles``. These two Headers are used by Hasura to manage session. Check out the documentation on ``Session Middleware`` for more information!
 This URL can be used to contact the service from anywhere on the internet.

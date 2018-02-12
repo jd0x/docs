@@ -13,7 +13,7 @@ Like any other authentication API, Hasura Auth has support for multiple ways to
 authenticate an user (e.g. username-based, email-based, mobile-based etc.).
 Hasura Auth calls each authentication method a "provider".
 
-Once a user is registerd (or signed-up) on Hasura, it attaches a Hasura
+Once a user is registered (or signed-up) on Hasura, it attaches a Hasura
 Identity or (``hasura_id``) to every user.  A Hasura identity is an integer.
 You can use this value in your application to tie your application's user to
 this identity.
@@ -109,6 +109,38 @@ If the signup request is successful:
    response.
 2. If the provider has any verification step (e.g. ``mobile``, ``email``), it
    will not login the user, and will return ``null`` as the session token.
+   
+   Make a request to the endpoint: ``/v1/user/signup``.
+
+.. code-block:: http
+
+   GET auth.<cluster-name>.hasura-app.io/v1/user/signup HTTP/1.1
+   Content-Type: application/json
+   
+   {
+     "provider": "username",
+     "data": {
+       "username": "johnsmith",
+       "password": "js@hasura"
+     }
+   }
+
+
+Typical response is :
+
+.. code-block:: http
+
+   HTTP/1.1 200 OK
+   Content-Type: application/json
+
+   {
+     "auth_token": "f876712c2fdbb3xcvxcvxvc2b376a3ad2dg31324bfee",
+     "username": "johnsmith",
+     "hasura_id": 2,
+     "hasura_roles": [
+       "user"
+     ]
+   }
 
 
 Logging In
@@ -119,6 +151,40 @@ The request payload of the login endpoint is similar to the signup endpoint.
 1. ``provider`` : A name of the provider to be used.
 2. ``data``: A JSON payload which is specific to each provider. See provider
    examples.
+   
+   
+   Make a request to the endpoint: ``/v1/user/login``.
+
+.. code-block:: http
+
+   GET auth.<cluster-name>.hasura-app.io/v1/user/login HTTP/1.1
+   Content-Type: application/json
+   
+   {
+     "provider": "username",
+     "data": {
+       "username": "johnsmith",
+       "password": "js@hasura"
+     }
+   }
+
+
+Typical response is :
+
+.. code-block:: http
+
+   HTTP/1.1 200 OK
+   Content-Type: application/json
+
+   {
+     "auth_token": "f876712c2fdbfdbbcbcvbcvbvc8606931324bfee",
+     "username": "johnsmith",
+     "hasura_id": 2,
+     "hasura_roles": [
+       "user"
+     ]
+   }
+
 
 Pending Verification
 ^^^^^^^^^^^^^^^^^^^^
@@ -153,7 +219,7 @@ Typical response is :
      "email": "johndoe@example.com",
      "hasura_id": 79,
      "hasura_roles": [
-         "user"
+       "user"
      ]
    }
 
@@ -187,7 +253,7 @@ To logout a user, make the following request.
    email
    mobile
    mobile_password
-   extra_fields
+   extra-fields
    sessions
    google
    facebook
@@ -196,6 +262,7 @@ To logout a user, make the following request.
    custom_provider
    config
    admin_endpoints
+   uikit
 
 
 .. _recaptcha: https://www.google.com/recaptcha/intro/index.html

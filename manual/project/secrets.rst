@@ -2,14 +2,14 @@
    :description: Describing the hasura project directory structure
    :keywords: hasura, docs, CLI, HasuraCTL, hasuractl, hasuracli
 
-.. _hasuractl-manual:
+.. _hasura-secrets-manual:
 
 .. highlight:: bash
 
 Project secrets
 ===============
 
-Project secrets are variables that your microserivces need, but variables that are not safe to put in your git repository.
+Project secrets are variables that your microservices need, but variables that are not safe to put in your git repository.
 Here are some typical examples:
 
 - Postgres (database) password

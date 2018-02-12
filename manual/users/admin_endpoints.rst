@@ -59,7 +59,10 @@ Typical response of the ``/v1/admin/user/<user_id>`` request is :
 Create User
 -----------
 
-To create a new user, make a request to the admin create-user endpoint : ``/v1/admin/create-user``
+To create a new user, make a request to the admin create-user endpoint : ``/v1/admin/create-user``.
+It is provider specific endpoint. Specify ``provider`` in request payload.
+
+For Username provider :-
 
 .. code-block:: http
 
@@ -67,21 +70,70 @@ To create a new user, make a request to the admin create-user endpoint : ``/v1/a
     Content-Type: application/json
 
     {
-      "email": "something@email.com",
-      "mobile": {
-        "number": "9999999999",
-        "country_code": "91"
+      "provider": "username",
+      "data":{
+        "username": "something123",
+        "password": "somepass124",
       },
-      "username": "something123",
-      "password": "somepass124",
       "is_active": true,
       "roles": ["user", "merchant", "something"]
     }
 
-You need provide atleast one of email, mobile and username fields. Other fields are mandatory.
+For Email provider :-
+
+.. code-block:: http
+
+    POST auth.<cluster-name>.hasura-app.io/v1/admin/create-user HTTP/1.1
+    Content-Type: application/json
+
+    {
+      "provider": "email",
+      "data":{
+        "email": "something@email.com",
+        "password": "somepass124",
+      },
+      "is_active": true,
+      "roles": ["user", "merchant", "something"]
+    }
+
+For Mobile-Password provider :-
+
+.. code-block:: http
+
+    POST auth.<cluster-name>.hasura-app.io/v1/admin/create-user HTTP/1.1
+    Content-Type: application/json
+
+    {
+      "provider": "mobile-password",
+      "data":{
+        "mobile": "9999999999",
+        "country_code": "91",
+        "password": "somepass124",
+      },
+      "is_active": true,
+      "roles": ["user", "merchant", "something"]
+    }
+
+For Mobile Only provider :-
+
+.. code-block:: http
+
+    POST auth.<cluster-name>.hasura-app.io/v1/admin/create-user HTTP/1.1
+    Content-Type: application/json
+
+    {
+      "provider": "mobile",
+      "data":{
+        "mobile": "9999999999",
+        "country_code": "91",
+      },
+      "is_active": true,
+      "roles": ["user", "merchant", "something"]
+    }
+
 If request is successful, the API will return response with user details.
 
-Typical response of the ``/v1/admin/create-user`` request is :
+Response is same for all providers. Typical response of the ``/v1/admin/create-user`` request is :
 
 .. code-block:: http
 
@@ -100,6 +152,7 @@ Typical response of the ``/v1/admin/create-user`` request is :
       "created": "2014-11-05T08:15:30-05:00",
       "last_login": "2014-11-05T08:15:30-05:00",
       "is_active": true,
+      "extra_info": {}
    }
 
 
@@ -112,11 +165,14 @@ Typical response of the ``/v1/admin/create-user`` request is :
 
 * ``is_active``  gives status of the user.
 
+* ``extra_info``  gives extra information of the user from custom provider. For default providers it is null. 
+
 
 Delete User
 -----------
 
-To remove existing user, make a request to the delete-user endpoint : ``/v1/admin/delete-user``
+To remove existing user, make a request to the delete-user endpoint : ``/v1/admin/delete-user``.
+Hasura Auth deletes user in all providers.
 
 .. code-block:: http
 
@@ -137,10 +193,21 @@ Typical response of the ``/v1/admin/delete-user`` request is :
    Content-Type: application/json
 
    {
-      "message": "user with user_id = 2 deleted"
+      "details":{
+          "username": "deleted",
+          "email": "not-found",
+          "mobile": "not-found",
+          "mobile-password": "not-found",
+          "google": "not-found",
+          "facebook": "not-found",
+          "github": "not-found",
+          "linkedin": "not-found",
+       },
+      "message": "User with hasura_id = 2 is deleted"
    }
 
 * ``hasura_id``  is the hasura identifier of the user.
+* ``details``  gives delete status of all providers. Status messages are ``deleted``, ``not-found``, ``not-deleted`` or HTTP exceptions from delete hooks.
 
 
 User Activate

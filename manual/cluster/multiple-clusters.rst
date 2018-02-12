@@ -1,7 +1,7 @@
 Managing multiple clusters
 ==========================
 
-Multiple Hasura clusters can be added to a single Hasura project. Infact, this
+Multiple Hasura clusters can be added to a single Hasura project. In fact, this
 is a common use-case in production workflows.
 
 For example, for a project one might have a ``staging`` cluster, which
@@ -19,7 +19,7 @@ To create a new cluster, use the ``hasura`` CLI.
   $ hasura cluster create --type free
 
 
-As an exmaple, let us create two clusters, one for staging and one for
+As an example, let us create two clusters, one for staging and one for
 production.
 
 .. code-block:: bash
