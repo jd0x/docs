@@ -6,7 +6,9 @@ Troubleshooting
 
 This error is thrown when a Hasura CLI command is executed in a directory which is not a Hasura project.
 Make sure ``clusters.yaml``, ``hasura.yaml``, ``microservices/``, ``migrations/``, ``conf/`` are present and are not empty.
-You can check https://github.com/hasura/base for reference.
+Also, check if :ref:`clusters.yaml <hasura-project-directory-clusters-yaml>` and :ref:`hasura.yaml <hasura-project-directory-hasura-yaml>` contains valid yaml as per the defined format.
+
+You can refer to :ref:`Directory Structure <hasura-project-directory-structure>` for more info about the project structure.
 
 [1035] Cannot connect to cluster: network call timed out
 --------------------------------------------------------
