@@ -12,7 +12,16 @@ Paid Clusters
    - Provisioning
 
 
-A paid Hasura cluster is a cluster hosted on infrastructure managed by Hasura.
+A paid cluster is a Hasura cluster running on dedicated infrastructure managed
+by Hasura.
+
+Currently only Digital Ocean is supported as a cloud provider. Other
+cloud providers are coming soon!
+
+The configuration of the cluster is declarative, and hence can be
+version controlled in a Hasura project.
+
+.. A paid cluster is a Hasura cluster hosted on infrastructure managed by Hasura.
 
 .. note::
 
@@ -28,4 +37,3 @@ A paid Hasura cluster is a cluster hosted on infrastructure managed by Hasura.
   sample-cluster-configs
   manage-billing
   reference-clusters-yaml
-
