@@ -13,7 +13,7 @@ html {
 }
 body
 {
-  min-width: 1220px;
+  min-width: 100%;
   overflow-y: auto;
 }
 h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited
@@ -514,14 +514,14 @@ p
 /* Common Header CSS */
 .main_container_wrapper
 {
-  min-width: 1220px;
+  min-width: 90%;
   overflow-y: auto;
 }
 .header_wrapper {
   font-family: 'Gudea';
   background-color: white;
   padding: 20px;
-  min-width: 1220px;
+  min-width: 90%;
   position: sticky;
   top: 0;
   position: -webkit-sticky;
@@ -552,6 +552,16 @@ p
 {
   color: #414859;
 }
+
+#nav_tree_icon {
+  position: relative;
+}
+
+#nav_tree_icon .fa-bars {
+  font-size: 18px;
+  color: #FEC53D;
+}
+
 .input_search_box {
   position: relative;
   width: 64%;
@@ -615,8 +625,6 @@ p
 .header_links.inline-block .buttons {
   float: right;
 }
-
-
 
 .link_element {
   padding: 5px 10px;
@@ -912,7 +920,7 @@ p
 }
 [role="main"]
 {
-  width: 800px !important;
+  width: 90% !important;
   max-width: 800px !important;
   border: none !important;
   padding-bottom: 0 !important;
@@ -1016,7 +1024,7 @@ p
   vertical-align: middle;
   font-size: 21px;
   font-weight: 600;
-  margin-left: 90px;
+  margin-left: calc(24vw - 240px);
 }
 
 #sidebar .sphinxsidebar .sphinxsidebarwrapper h4
@@ -1058,6 +1066,10 @@ ol, ul
   font-family: 'Gudea';
   font-size: 16px;
 }
+
+.no_scroll {
+  overflow: hidden !important;
+}
 /* Reference Page ends here */
 
 /* Media Query */
@@ -1065,7 +1077,7 @@ ol, ul
 {
   body
   {
-    min-width: 1220px !important;
+    min-width: 100% !important;
     overflow-y: auto;
   }
   html
@@ -1204,6 +1216,87 @@ ol, ul
   width:  100%;
 }
 
+.mobile-only {
+  display: none;
+}
 
+.mobile-logo-docs {
+  margin-left:10px;
+  text-decoration: none;
+  color: #333 !important;
+}
 
+@media (max-width: 1024px) {
+  body {
+    max-width: 100%;
+    min-width: 0px !important;
+  }
 
+  .input_search_box {
+    width: 60%;
+    margin-left: 10px;
+  }
+
+  .mobile-only {
+    display: initial;
+  }
+
+  .mobile-hide {
+    display: none !important;
+  }
+
+  #sidebar {
+    position: absolute;
+    width: 90% !important;
+    max-width: 800px !important;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 120px;
+    height: calc(100% - 120px);
+  }
+
+  .main_container_wrapper {
+    min-width: 0px !important;
+  }
+
+  .content_inner_wrapper {
+    width: 100% !important;
+  }
+
+  [role="main"] {
+    float: none !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
+
+  .mobile-logo {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .search_head_wrapper {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .input_search_box {
+    width: 90%;
+    margin-left: 10px;
+  }
+
+  #sidebar {
+    top: 170px;
+    height: calc(100% - 170px);
+  }
+
+  .header_links {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .buttons {
+    float: none !important;
+  }
+}

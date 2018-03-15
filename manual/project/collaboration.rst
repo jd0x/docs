@@ -6,8 +6,8 @@
 
 .. highlight:: bash
 
-Collaborating on a Hasura Project
-=================================
+Collaborating on a project
+==========================
 
 Many developers can work on a single Hasura project and all the clusters added to it,
 since all the configuration is in files, managed by git.
@@ -17,21 +17,22 @@ clusters through `Hasura Dashboard <https://dashboard.hasura.io/clusters/>`_.
 Adding collaborators to your project
 ------------------------------------
 
-Assuming you already have a Hasura project,
+Assuming you already have a Hasura project and clusters,
 
+* Push your project to an online git repository (like |github-link|) and share the URL with all collaborators to share the project source code
 * Open |dashboard-link|
-* Click on the cluster name that is added to the project
+* Click on a cluster name that is added to the project
 * Click on ``Collaborators`` tab
-* Add emails of those who you want to add as collaborators
-* Push your project to an online git repository like |github-link| and share the URL with collaborators
+* Add emails of those who you want to add as collaborators to give access to the cluster
+* Repeat for any other clusters
 
 Joining as a collaborator to a project
 --------------------------------------
 
-Assuming the owner have shared the repo URL and added you as a collaborator to the clusters,
+Assuming the owner has shared the repo URL and added you as a collaborator to the clusters,
 
 * :ref:`Login using Hasura CLI <hasura_login>` with the account having email added as collaborator
-* Clone and cd into the repo
+* Clone the project source code from the repository link shared by the owner and ``cd`` into the repo
 * Execute :ref:`hasura cluster list <hasura_cluster_list>`
 * You should be able to see the clusters available to you and clusters added to the project
 * For each cluster added to the project, make sure it is listed as available with the actual owner's email. If not, request the owner to check your email address
@@ -40,8 +41,11 @@ Assuming the owner have shared the repo URL and added you as a collaborator to t
   .. code-block:: bash
 
      # this command will fetch credentials, adds your ssh key to each cluster and sets up hooks and remotes
-     # note: this command is only available in this form from v0.2.37 onwards
      $ hasura setup
+
+  .. note::
+
+     this command is only available in this form from Hasura CLI v0.2.37 onwards
 
 * You can now access these clusters
 

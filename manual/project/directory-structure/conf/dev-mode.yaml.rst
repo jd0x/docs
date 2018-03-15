@@ -1,11 +1,11 @@
 .. _hasura-dir-conf-dev-mode.yaml:
 
-dev-mode.yaml
-=============
+Project structure: conf/dev-mode.yaml
+=====================================
 
 .. note::
 
-   This file is rendered as a template. Refer to :ref:`Using Templates <using-templates>` for more details.
+   This file is rendered as a template. Refer to :ref:`Conf files templating <conf-templating>` for more details.
 
 If development mode is set as ``true`` for certain microservices, an environment variable mentioning the microservice is in development will be set.
 This can be used to output debug logs or messages.

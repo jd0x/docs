@@ -2,9 +2,9 @@ Managing multiple clusters
 ==========================
 
 Multiple Hasura clusters can be added to a single Hasura project. In fact, this
-is a common use-case in production workflows.
+is a common use-case in production workflows to simulate different environments.
 
-For example, for a project one might have a ``staging`` cluster, which
+For example, for a project one might have, a ``dev`` cluster for use during development, a ``staging`` cluster, which
 replicates the production environment and is used to test before making the
 project live, and a ``production`` cluster for the live instance of the
 project.
@@ -62,15 +62,17 @@ To add a cluster to a project we use:
 
 .. code-block:: bash
 
-  $ hasura cluster add caddy89 -c production
+  # in project directory
+  $ hasura cluster add <cluster-name> -c <cluster-alias>
 
-The ``-c`` flags tells to create a alias ``production`` the for the cluster. We
+The ``-c`` flags tells to create an alias for the cluster. We
 can then use this alias in various other commands including git push.
 
 Let's add the newly created two clusters to our projects.
 
 .. code-block:: bash
 
+  # in project directory
   $ hasura cluster add alarming52 -c staging
 
   INFO Adding cluster...                             cluster-alias=staging cluster-name=alarming52
@@ -92,8 +94,8 @@ Let's add the newly created two clusters to our projects.
 Now we have two clusters setup for the same project.
 
 
-Deploy to cluster
------------------
+Deploy to a cluster
+-------------------
 Now whenever we make changes to out project, in database schema, cluster
 configuration or custom microservices, we just have to git-push to the correct
 cluster to apply all our changes.

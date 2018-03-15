@@ -6,12 +6,6 @@
 Reference for clusters.yaml
 ===========================
 
-..
-   - What is clusters.yaml
-   - Describe differenct sections
-   - Point to the section on use-cases: cluster-config.rst
-
-
 What is clusters.yaml
 ---------------------
 

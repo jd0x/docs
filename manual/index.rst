@@ -16,27 +16,24 @@ This is the reference documentation of the entire Hasura platform.
 
   getting-started/index
   install-hasura-cli
-  The complete tutorial<tutorial/index>
+  The complete tutorial <tutorial/index>
   Hasura project <project/index>
   Hasura cluster <cluster/index>
   Paid clusters <paid-clusters/index>
-  api-console/index
-  users/index
-  roles/index
+  Project microservices <microservices/index>
+  Hasura Hub <hub/index>
+  API Console <api-console/index>
+  auth/index
+  user-roles/index
+  auth-ui-kit/index
   data/index
-  data-modelling/index
-  Files <files/index>
-  Emails/SMS <email-sms/index>
-  Emails <email/index>
-  SMS <sms/index>
+  filestore/index
+  notify/index
   API gateway <gateway/index>
-  custom-microservices/index
-  git-push configuration <git-push/index>
-  custom-domains-ssl
-  Logs <monitoring-logging/logs/index>
   hasura CLI reference <hasuractl/index>
-  hasura.io/hub guide <hub/index>
-  Platform reference <reference/index>
+  hasura API reference <api-reference/index>
+  architecture/index
+  Guides <guides/index>
   Advanced <advanced/index>
   Moving to v0.15 (existing Hasura users) <migration-v0_15/index>
 

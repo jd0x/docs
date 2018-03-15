@@ -13,11 +13,14 @@ It is responsible for routing all external requests to the correct upstream
 (acting as a reverse proxy), terminating SSL connections and resolving sessions
 for upstream microservices (acting as a session middleware).
 
+See:
+^^^^
+
 .. toctree::
    :maxdepth: 1
 
-   services-routing
-   session-middleware
+   Routing <routing>
+   Session Middleware <session-middleware>
    custom-http-directives
    custom-domains-ssl
    cors-settings

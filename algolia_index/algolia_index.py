@@ -1,14 +1,16 @@
 import sys
 import os
 import json
+import time
 
 from algoliasearch import algoliasearch
 
 APPLICATION_ID = os.environ["ALGOLIA_APPLICATION_ID"]
 ADMIN_KEY = os.environ["ALGOLIA_ADMIN_KEY"]
+ALGOLIA_INDEX_NAME = os.environ["ALGOLIA_INDEX_NAME"]
 
 client = algoliasearch.Client(APPLICATION_ID, ADMIN_KEY)
-index = client.init_index("docs_search")
+index = client.init_index(ALGOLIA_INDEX_NAME)
 
 
 def update_index(data):
@@ -23,10 +25,10 @@ def output_indexed_data():
     res = index.browse_all({"query": ""})
 
     count = 0
-    print("INDEXED PAGES:")
+    # print("INDEXED PAGES:")
     for hit in res:
         count += 1
-        print('\t' + hit['title'] + ' (' + hit['url'] + ')')
+        # print('\t' + hit['title'] + ' (' + hit['url'] + ')')
 
     print('\nTOTAL INDEXED: ' + str(count))
 
@@ -62,6 +64,7 @@ def docs_index(data_source):
     processed_json_d = process_data(json_d)
 
     update_index(processed_json_d)
+    time.sleep(2)
     output_indexed_data()
 
 

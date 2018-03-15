@@ -1,11 +1,11 @@
 .. _hasura-dir-ms-k8s.yaml:
 
-*/k8s.yaml
-==========
+Project structure: microservices/\*/k8s.yaml
+============================================
 
 .. note::
 
-   This file is rendered as a template. Refer to :ref:`Using Templates <using-templates>` for more details.
+   This file is rendered as a template. Refer to :ref:`Conf files templating <conf-templating>` for more details.
 
 A microservice on Hasura is defined as a `Kubernetes Deployment <https://kubernetes.io/docs/concepts/workloads/controllers/deployment/>`_ and a corresponding `Kubernetes Service <https://kubernetes.io/docs/concepts/services-networking/service/>`_. Both of these objects are saved in a single file, ``k8s.yaml`` as a Kubernetes List object.
 
@@ -31,7 +31,7 @@ You can provide environment variables (env vars) for microservices to use by edi
 
 Let's say you need to add two variables called ``CLUSTER_NAME`` and ``RELEASE_MODE``. Cluster name should get the name of the cluster and release mode should be ``production`` for cluster with alias ``prod`` and ``dev`` for all other clusters. Deployment section in ``k8s.yaml`` for such a configuration would look like the following:
 
-.. code-block:: yaml
+.. code-block:: yaml+jinja
    :emphasize-lines: 21-29
 
    apiVersion: extensions/v1beta1

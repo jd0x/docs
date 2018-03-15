@@ -1,7 +1,6 @@
 Creating a paid cluster
 =======================
 
-
 Enable billing on your account
 ------------------------------
 

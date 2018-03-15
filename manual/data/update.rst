@@ -1,7 +1,10 @@
-Update data 
-------------------
+Updating data
+=============
 
-The request to update data consists of two parts - the new values and a ``where`` indicating what rows to update. The syntax of where clause is same as in the `select` query. For the full syntax of update request, see :ref:`here <data_update>`.
+The request to update data consists of two parts - the new values and a ``where`` indicating what rows to update. The syntax of where clause is same as in the ``select`` query.
+
+The full definition of an `update` query can be found :ref:`here <data_update>`.
+
 
 .. code-block:: http
 
@@ -12,7 +15,7 @@ The request to update data consists of two parts - the new values and a ``where`
        "type" : "update",
        "args" : {
            "table" : "article",
-           "$set": {"title": "Mysterious affair at Styles"},
+           "$set": {"title": "Article 4", "description": "Sample article 4"},
            "where": {
                "id": 4
            }

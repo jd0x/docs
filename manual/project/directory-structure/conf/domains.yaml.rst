@@ -1,11 +1,11 @@
 .. _hasura-dir-conf-domains.yaml:
 
-domains.yaml
-============
+Project structure: conf/domains.yaml
+====================================
 
 .. note::
 
-   This file is rendered as a template. Refer to :ref:`Using Templates <using-templates>` for more details.
+   This file is rendered as a template. Refer to :ref:`Conf files templating <conf-templating>` for more details.
 
 Domain configuration for the gateway is defined in this file. Hasura allots a ``[cluster-name].hasura-app.io`` for every cluster, for which the configuration should look like the following:
 

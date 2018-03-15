@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   {%- if version != latest_docs_version %}
-    <link ref="canonical" href="https://docs.hasura.io/{{latest_docs_version}}/{{pagename}}.html" />
+    <link ref="canonical" href="https://docs.{{ BASE_DOMIAN }}/{{latest_docs_version}}/{{pagename}}.html" />
   {% endif %}
   <script src="{{ pathto('_static/vendor.js', 1) }}"></script>
   {% block javascript %}
@@ -31,8 +31,8 @@
 {% block document %}
   <div id="custom-doc" class="{% block bodyclass %}{{ 'yui-t6' if pagename != 'index' else '' }}{% endblock %}">
     <div class="main_container_wrapper">
+      {% include 'pages/loading.html' %}
       <div id="" class="content_wrapper">
-        {% include 'pages/loading.html' %}
         {%- if pagename == 'index' %}
           {% include 'pages/landing.html' %}
         {%- elif pagename == 'guides/index' %}
@@ -43,7 +43,7 @@
           {% block sidebarwrapper %}
             {% set currPage = pagename.split('/')[0] %}
             {% if ( currPage == 'manual' or currPage == 'guides' ) %}
-              <div class="yui-b" id="sidebar">
+              <div class="yui-b mobile-hide" id="sidebar">
                 {%- if last_updated %}
                   <span><b>Last updated:</b> {{ last_updated }}</span>
                 {%- endif %}
@@ -85,7 +85,18 @@
                     </div>
                   </div>
                 </div -->
+                <div class="mobile-logo mobile-only">
+                  <a href="https://{{ BASE_DOMAIN }}/" target="_blank">
+                    <div class="img_wrapper inline-block">
+                      <img class="responsive logo_img" src="{{ pathto('_images/logo.svg', 1) }}" />
+                    </div>
+                  </a>
+                  <a href="https://docs.{{ BASE_DOMAIN }}" class="docs_label mobile-logo-docs">DOCS&nbsp;&nbsp;v{{version}}</a>
+                </div>
                 <div class="search_head_wrapper">
+                  <div class="inline-block mobile-only" id="nav_tree_icon">
+                    <span class="fa fa-bars"></span>
+                  </div>
                   <div class="inline-block input_search_box">
                     <span class="fa fa-search"></span>
                     <input type="text" class="search_element" placeholder="Type search term and press <enter> ..." />
@@ -93,12 +104,12 @@
                   <div class="header_links inline-block">
                     <div class="buttons">
                       <div class="inline-block">
-                        <!-- a target="_blank" href="https://dashboard.hasura.io/login" -->
-                          <button class="indiv_btns black" id="supportBtn"> Support </button>
-                        </!-- a -->
+                        <!-- a target="_blank" href="https://dashboard.{{ BASE_DOMAIN }}/login" -->
+                          <button class="indiv_btns black supportBtn"> Support </button>
+                        <!--/ a -->
                       </div>
                       <div class="inline-block">
-                        <a target="_blank" href="https://hasura.io/get-started">
+                        <a target="_blank" href="https://dashboard.{{ BASE_DOMAIN }}/">
                           <button class="indiv_btns">Get started</button>
                         </a>
                       </div>
@@ -123,56 +134,78 @@
       </div>
     </div>
     <div class="search_wrapper_template hide">
-      <div class="wd_80">
-        <div class="search_box_head">
-          <h3 class="head_wrapper search_heading">
-            <div class="inline-block">
-              <%= totalResults %> result<%= totalResults > 1 ? 's' : '' %> for <span class="search_query">'<%= _.escape(searchString) %>'</span>
-            </div>
-            <div class="algolia_search_attribution">
-              <span>
-                powered by
-              </span>
-              <span>
-                <img class="algolia_image" src="{{ pathto('_images/algolia-logo.svg', 1) }}" alt="Algolia Hasura Search" />
-              </span>
-            </div>
-          </h3>
-        </div>
-        <%
-            if ( objs.length > 0 ) {
-        %>
-        <ul>
-        <%
-              _.each(objs, function(obj, index ) {
-        %>
-                <li class="search_bullets">
-                  <a class="search_results_anchor" href="{{ pathto('', 1) }}<%= obj.url %>">
-                    <div class="no_of_results">
-                      <%= obj.title %>
-                    </div>
-                  </a>
-                  <div class="search_results_description">
-                    <%= obj.description.length > 200 ? obj.description.slice(0, 200 ) + ' ...' : obj.description %>
-                  </div>
-                </li>
-              </a>
-        <%
-            });
-        %>
-        </ul>
-        <%
-          } else {
-        %>
-          <div class="no_results"> Sorry! we cannot find what you are searching for! </div>
-        <%
-          }
-        %>
-        <div class = "pagination_container wd_100" id = "pagination_container"></div>
-        <div style="clear: both;"></div>
+      <div class="search_box_head">
+        <h3 class="head_wrapper search_heading">
+          <div class="inline-block">
+            <%= totalResults %> result<%= totalResults > 1 ? 's' : '' %> for <span class="search_query">'<%= _.escape(searchString) %>'</span>
+          </div>
+          <div class="algolia_search_attribution">
+            <span>
+              powered by
+            </span>
+            <span>
+              <img class="algolia_image" src="{{ pathto('_images/algolia-logo.svg', 1) }}" alt="Algolia Hasura Search" />
+            </span>
+          </div>
+        </h3>
       </div>
+      <%
+          if ( objs.length > 0 ) {
+      %>
+      <ul>
+      <%
+            _.each(objs, function(obj, index ) {
+      %>
+              <li class="search_bullets">
+                <a class="search_results_anchor" href="{{ pathto('', 1) }}<%= obj.url %>">
+                  <div class="no_of_results">
+                    <%= obj.title %>
+                  </div>
+                </a>
+                <div class="search_results_description">
+                  <%= obj.description.length > 200 ? obj.description.slice(0, 200 ) + ' ...' : obj.description %>
+                </div>
+              </li>
+            </a>
+      <%
+          });
+      %>
+      </ul>
+      <%
+        } else {
+      %>
+        <div class="no_results"> Sorry! we cannot find what you are searching for! </div>
+      <%
+        }
+      %>
+      <div class = "pagination_container wd_100" id = "pagination_container"></div>
+      <div style="clear: both;"></div>
     </div>
     <div class="search_wrapper main_wrapper hide">
+      <div class="wd_80">
+        <div class="search_head_wrapper">
+          <div class="inline-block input_search_box">
+            <span class="fa fa-search"></span>
+            <input type="text" class="search_element" placeholder="Type search term and press <enter> ..." />
+          </div>
+          <div class="header_links inline-block">
+            <div class="buttons">
+              <div class="inline-block">
+                <!-- a target="_blank" href="https://dashboard.{{ BASE_DOMAIN }}/login" -->
+                <button class="indiv_btns black supportBtn"> Support </button>
+                <!--/ a -->
+              </div>
+              <div class="inline-block">
+                <a target="_blank" href="https://dashboard.{{ BASE_DOMAIN }}/">
+                  <button class="indiv_btns">Get started</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="search_wrapper_content"></div>
+      </div>
     </div>
   </div>
 {% endblock %}
@@ -208,28 +241,27 @@
 
   <script type="text/javascript">
     $(document).ready( function() {
+      const supportbtnHandler = function() {
+        if ( window.Intercom ) {
+          window.Intercom('show');
+        }
+      };
+      $('.supportBtn').on('click', supportbtnHandler);
+
+      // search
       var lastSearched = "";
 
-      const enableContent = function() {
+      const showContent = function() {
         $('.content_wrapper').removeClass('hide');
         $('.search_wrapper').addClass('hide');
       };
 
-      const enableSearch = function() {
+      const showSearchResults = function() {
         $('.content_wrapper').addClass('hide');
         $('.search_wrapper').removeClass('hide');
       };
 
       const search = function(searchTerm) {
-        if ( searchTerm.length === 0 ) {
-          hideLoading();
-          enableContent();
-          lastSearched = '';
-          window.history.replaceState({ "url": "" }, 'Search Page', window.history.state.url );
-
-          return;
-        }
-
         if ( !searchFunc ) {
           return;
         }
@@ -243,63 +275,76 @@
             "totalResults": content.nbHits
           });
 
-          $(".search_wrapper").html(templated_html);
+          $(".search_wrapper_content").html(templated_html);
 
-          window.history.pushState({"url": ( window.location.pathname +'?query=' + searchTerm + '' ) }, 'Search Page', '?query=' + searchTerm + '' );
-
-          enableSearch();
           hideLoading();
+          showSearchResults();
 
           trackga('docs', 'search', content.query, content.nbHits);
         }
 
+
         showLoading();
 
-        if ( lastSearched !== searchTerm ) {
-          lastSearched = searchTerm;
-          searchFunc(searchTerm, callback, 1, [], ['url', 'description', 'title', 'image', 'tags']);
-        } else {
-          hideLoading();
-        }
+        searchFunc(searchTerm, callback, 1, [], ['url', 'description', 'title', 'image', 'tags']);
       };
-
-      $('.search_element').on('keyup', function(e) {
-        // Execute on enter only
-        if ( e.keyCode === 13 ) {
-          search(e.target.value);
-        }
-      });
 
       const handleQueryParams = function() {
         const re = /query=(.*)$/;
         const match = re.exec(window.location.search);
 
+        var searchTerm = '';
         if ( match ) {
-          const searchValue = decodeURIComponent(match[1]);
-          $('.search_element').val(searchValue);
-          search(searchValue);
+          searchTerm = decodeURIComponent(match[1]);
+
+          if (searchTerm) {
+            search(searchTerm);
+          } else {
+            showContent();
+          }
         } else {
-            hideLoading();
-            enableContent();
-            $('.search_element').val('');
-            lastSearched = '';
+          showContent();
         }
 
+        $('.search_element').val(searchTerm);
+        lastSearched = searchTerm;
       };
 
-      const supportBtnObj = document.getElementById("supportBtn");
-      const handleSupportBtnClick = function() {
-        if ( window.Intercom ) {
-          window.Intercom('show');
+      const searchHandler = function(e) {
+        // Execute on enter only
+        if (e.keyCode === 13) {
+          if (lastSearched !== e.target.value) {
+            window.history.pushState({"url": (window.location.pathname + '?query=' + e.target.value + '')}, 'Search Page', '?query=' + e.target.value + '');
+            handleQueryParams();
+          }
         }
       };
-      supportBtnObj.addEventListener("click", handleSupportBtnClick);
+      $('.search_element').on('keyup', searchHandler);
+
+      const navTreeHandler = function(e) {
+        const sidebar = $('#sidebar');
+        const background = $('.content_inner_wrapper');
+        const body = $('body');
+
+        if (sidebar.hasClass('mobile-hide')) {
+          sidebar.removeClass('mobile-hide');
+          background.addClass('no_scroll');
+          body.addClass('no_scroll');
+        } else {
+          sidebar.addClass('mobile-hide');
+          background.removeClass('no_scroll');
+          body.removeClass('no_scroll');
+        }
+      };
+      $('#nav_tree_icon').on('click', navTreeHandler);
 
       window.onpopstate = function() {
         handleQueryParams();
       };
 
-      window.location.search.length > 0 ? handleQueryParams() : '';
+      if (window.location.search.length > 0) {
+        handleQueryParams();
+      }
     });
   </script>
 

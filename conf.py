@@ -31,12 +31,16 @@ StandaloneHTMLBuilder.script_files = []
 
 ALGOLIA_SECRETS = {
     "development": {
-        "APPLICATION_ID": "2R09CYX6BF",
-        "APPLICATION_SEARCH_KEY": "1361d3d9973e36ed78e29c3018f74aa6"
+        "APPLICATION_ID": "WCBB1VVLRC",
+        "APPLICATION_SEARCH_KEY": "19a7f1bbd9ca23d0b8ae2b5e655ebeb9",
+        "ALGOLIA_INDEX_NAME": "stg_docs_search",
+        "ALGOLIA_INDEX_NAME_SEC": "stg_docs_by_date_desc"
     },
     "production": {
         "APPLICATION_ID": "WCBB1VVLRC",
-        "APPLICATION_SEARCH_KEY": "0ca574a476e8fe0db465410151288730"
+        "APPLICATION_SEARCH_KEY": "0ca574a476e8fe0db465410151288730",
+        "ALGOLIA_INDEX_NAME": "docs_search",
+        "ALGOLIA_INDEX_NAME_SEC": "docs_by_date_desc"
     }
 }
 
@@ -44,11 +48,28 @@ ALGOLIA_SECRETS = {
 CURRENT_ENV = os.getenv("ENV") if os.getenv("ENV") else "development"
 BASE_DOMAIN = os.getenv("BASE_DOMAIN", "development")
 
+ALGOLIA_APPLICATION_ID = ALGOLIA_SECRETS[CURRENT_ENV]["APPLICATION_ID"]
+ALGOLIA_SEARCH_KEY = ALGOLIA_SECRETS[CURRENT_ENV]["APPLICATION_SEARCH_KEY"]
+# Get from env if set
+if os.getenv("ALGOLIA_APPLICATION_ID") and os.getenv("ALGOLIA_SEARCH_KEY"):
+    ALGOLIA_APPLICATION_ID = os.getenv("ALGOLIA_APPLICATION_ID")
+    ALGOLIA_SEARCH_KEY = os.getenv("ALGOLIA_SEARCH_KEY")
+
+ALGOLIA_INDEX_NAME = ALGOLIA_SECRETS[CURRENT_ENV]["ALGOLIA_INDEX_NAME"]
+ALGOLIA_INDEX_NAME_SEC = ALGOLIA_SECRETS[CURRENT_ENV]["ALGOLIA_INDEX_NAME_SEC"]
+# Get from env if set
+if os.getenv("ALGOLIA_INDEX_NAME"):
+    ALGOLIA_INDEX_NAME = os.getenv("ALGOLIA_INDEX_NAME")
+if os.getenv("ALGOLIA_INDEX_NAME_SEC"):
+    ALGOLIA_INDEX_NAME_SEC = os.getenv("ALGOLIA_INDEX_NAME_SEC")
+
 html_context = {
-    "APPLICATION_ID": ALGOLIA_SECRETS[CURRENT_ENV]["APPLICATION_ID"],
-    "APPLICATION_SEARCH_KEY": ALGOLIA_SECRETS[CURRENT_ENV]["APPLICATION_SEARCH_KEY"],
+    "ALGOLIA_APPLICATION_ID": ALGOLIA_APPLICATION_ID,
+    "ALGOLIA_SEARCH_KEY": ALGOLIA_SEARCH_KEY,
+    "ALGOLIA_INDEX_NAME": ALGOLIA_INDEX_NAME,
+    "ALGOLIA_INDEX_NAME_SEC": ALGOLIA_INDEX_NAME_SEC,
     "SITEMAP_DOMAIN": "https://docs.hasura.io/",
-    "BASE_DOMAIN": "https://docs.hasura.io" if BASE_DOMAIN == "production" else "https://docs.hasura-stg.hasura-app.io"
+    "BASE_DOMAIN": "hasura.io" if BASE_DOMAIN == "production" else "hasura-stg.hasura-app.io"
 }
 
 # End of it
@@ -70,8 +91,8 @@ sys.path.append(abspath(join(dirname(__file__), "_ext")))
 # "sphinxcontrib.fulltoc",
 extensions = [
     "djangodocs",
-    "generate_index",
     "fulltoc",
+    "generate_index",
     "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
     "sphinxcontrib.swaggerdoc",
