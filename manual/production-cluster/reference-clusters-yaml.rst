@@ -24,7 +24,7 @@ to the cluster.
 Structure
 ---------
 
-The ``clusters.yaml`` file is a YAML file containing your clusters' information.
+The ``clusters.yaml`` file is a YAML file containing information about your clusters.
 
 It contains the alias as well as the infra spec for the cluster.
 

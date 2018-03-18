@@ -16,7 +16,7 @@ To list all the existing clusters and see the overall status, run:
 
 To see the status of an existing cluster
 ----------------------------------------
-Make sure you are in the relevant project directory:
+Make sure you are in the relevant project directory, and the run:
 
 .. code-block:: bash
 
@@ -28,9 +28,10 @@ Scale a cluster
 A cluster's initial configuration is set in ``clusters.yaml``.
 
 Subsequent changes to a cluster's configuration can be made by modifying the
-infra spec in this file (:doc:`refer here <./reference-clusters-yaml>`), or by
+infra spec documented in this :doc:`file <./reference-clusters-yaml>`, or by
 using the `Pricing Calculator <https://hasura.io/pricing>`_, and then applying
 these changes.
+
 
 .. note::
 
@@ -43,7 +44,7 @@ Using the pricing calculator
 * Choose a configuration using the `Pricing Calculator
   <https://hasura.io/pricing>`_.
 
-* Click the "Install using CLI" button, and copy the generated infra code.
+* Click the "Install using Hasura CLI" button, and copy the generated infra code.
 
 * Run the command:
 

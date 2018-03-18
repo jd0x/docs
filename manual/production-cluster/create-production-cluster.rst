@@ -4,11 +4,7 @@ Creating a production cluster
 Enable billing on your account
 ------------------------------
 
-Make sure you have billing enabled on your account.
-
-Log in to `Hasura Dashboard <https://dashboard.hasura.io/>`_, go to the billing
-page, and add payment details to enable billing on your account.
-
+Log in to `Hasura Dashboard <https://dashboard.hasura.io/>`_, go to the `Billing` tab, and add payment details to enable billing on your account. You can refer to the documentation :doc:`here <./reference-clusters-yaml>` on how to do so.
 
 Creating a cluster
 ------------------
