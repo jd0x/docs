@@ -75,3 +75,29 @@ your own volume for persistent microservices.
    # custom volume
    - name: my-volume
      size: 10
+
+
+Production environment - Advanced
+---------------------------------
+Single-node cluster for production environments for powerful apps, with your own
+volume for persistent microservices.
+
+.. code-block:: yaml
+
+   version: v1
+   provider: digital-ocean
+   region: blr1
+   nodes:
+   - type: s-4vcpu-8gb
+     labels:
+       app: postgres
+   volumes:
+   - name: postgres
+     size: 30
+   - name: filestore
+     size: 30
+   - name: sessionstore
+     size: 10
+   # custom volume
+   - name: my-volume
+     size: 20

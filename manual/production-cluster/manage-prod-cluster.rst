@@ -52,6 +52,19 @@ Using the pricing calculator
 
 .. code-block:: bash
 
+   $ hasura cluster upgrade -c <cluster-alias> --infra XXXXXX
+
+
+Modifying ``clusters.yaml`` file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Edit the ``clusters.yaml`` file (see :doc:`here` for more details about
+  ``clusters.yaml``), and modify the node type and volume sizes to the new
+  configuration you want. Save and exit the file.
+
+* Run the command:
+
+.. code-block:: bash
+
    $ hasura cluster upgrade -c <cluster-alias>
 
 
