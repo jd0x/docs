@@ -27,9 +27,9 @@ version controlled in a Hasura project**.
   :maxdepth: 1
   :titlesonly:
 
-  create-production-cluster
-  cluster-config
-  cluster-maintenance
-  sample-cluster-configs
   manage-billing
+  create-production-cluster
+  sample-cluster-configs
+  manage-prod-cluster.rst
+  cluster-maintenance
   reference-clusters-yaml

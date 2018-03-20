@@ -5,6 +5,8 @@
 Managing a cluster
 ==================
 
+Let's see how to interact with and modify production tier clusters. You need to have one or more production clusters to perform most of the following operations.
+
 List existing clusters
 ----------------------
 To list all the existing clusters and see the overall status, run:

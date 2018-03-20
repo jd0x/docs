@@ -5,6 +5,7 @@
 
 Reference for clusters.yaml
 ===========================
+This is the reference documentation for the structure of the ``clusters.yaml`` config file and other details.
 
 What is clusters.yaml
 ---------------------
@@ -173,4 +174,4 @@ Any string value.
 Examples
 --------
 
-For sample configurations, see :doc:`sample configs <./sample-cluster-configs>`.
+For sample ``clusters.yaml`` configurations, see :doc:`this <./sample-cluster-configs>`.

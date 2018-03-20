@@ -1,9 +1,11 @@
 Cluster Maintenance
 ===================
+From time to time, your cluster may need maintenance to keep the platform and its underlying components up to date with their latest versions. Some of these operations, for e.g. upgrading the platform, etc., will be carried out automatically during your preferred maintenance window (*non-breaking changes only*). If you haven't already done so, please fill out this short form `form <https://goo.gl/forms/znQLp6eWKH5vCGeD3>`_ to indicate your maintenance window preferrances.
 
-* Upgrade the platform to the latest version
-* Upgrage Postgres
-* Upgrade other components
+.. note::
+
+   Your are required to contact Hasura support if you want to run any of the following maintenance operations.
+
 
 Upgrade the platform
 --------------------

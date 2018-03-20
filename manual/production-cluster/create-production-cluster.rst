@@ -1,10 +1,16 @@
 Creating a production cluster
 =============================
 
+This section takes your over the process of creating a cluster on Hasura's Production tier.
+
+.. note::
+
+   Having an active billing account is a mandatory to create Production tier clusters.
+
 Enable billing on your account
 ------------------------------
 
-Log in to `Hasura Dashboard <https://dashboard.hasura.io/>`_, go to the `Billing` tab, and add payment details to enable billing on your account. You can refer to the documentation :doc:`here <./reference-clusters-yaml>` on how to do so.
+Log in to `Hasura Dashboard <https://dashboard.hasura.io/>`_, go to the `Billing` tab, and add payment details to enable billing on your account. You can refer to the documentation :doc:`here <./manage-billing>` on how to do so.
 
 Creating a cluster
 ------------------
@@ -12,8 +18,7 @@ Creating a cluster
 Choose cluster configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can generate your cluster's configuration using the `Pricing Calculator
-<https://hasura.io/pricing>`_.
-
+<https://hasura.io/pricing>`_. Check out a few sample cluster configurations :doc:`here <./sample-cluster-configs>`
 
 Create the cluster
 ^^^^^^^^^^^^^^^^^^
@@ -75,7 +80,7 @@ Advanced
 --------
 You can also write declarative configuration of your cluster. The file
 ``clusters.yaml`` (at the top-level of a Hasura project directory) can contain
-cluster configuration. :doc:`Learn more <./reference-clusters-yaml>`.
+cluster configuration. Check out the :doc:`reference documentation for clusters.yaml <./reference-clusters-yaml>` and some :doc:`sample cluster configurations <./sample-cluster-configs>`.
 
 Once you have added your cluster configuration in ``clusters.yaml``, run the
 following command to create a cluster.
@@ -87,4 +92,4 @@ following command to create a cluster.
 
 where ``<cluster-alias>`` is the cluster alias in the ``clusters.yaml``.
 
-After this, you should add the cluster to the project.
+After this, you should add the cluster to the project. For reference, see :doc:`this <../hasuractl/hasura_cluster_add>`.

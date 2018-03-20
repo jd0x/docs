@@ -1,11 +1,7 @@
 Manage Billing
 ==============
 
-Billing accounts can be created and managed in the `Hasura Dashboard <https://dashboard.hasura.io/projects>`_.
-
-.. note::
-
-   Adding your billing details is necessary for creating a Production tier cluster.
+Having an active billing account is a mandatory to create Production tier clusters. Billing accounts can be created and managed in the `Hasura Dashboard <https://dashboard.hasura.io/projects>`_. This section details the process of adding and modifying a billing account.
 
 Adding billing information
 --------------------------
