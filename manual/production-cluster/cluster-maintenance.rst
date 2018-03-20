@@ -1,6 +1,6 @@
 Cluster Maintenance
 ===================
-From time to time, your cluster may need maintenance to keep the platform and its underlying components up to date with their latest versions. Some of these operations, for e.g. upgrading the platform, etc., will be carried out automatically during your preferred maintenance window (*non-breaking changes only*). If you haven't already done so, please fill out this short form `form <https://goo.gl/forms/znQLp6eWKH5vCGeD3>`_ to indicate your maintenance window preferrances.
+From time to time, your cluster may need maintenance to keep the platform and its underlying components up to date with their latest versions. Some of these operations, for e.g. upgrading the platform, etc., will be carried out automatically during your preferred maintenance window (*non-breaking changes only*). If you haven't already done so, please fill out this short `form <https://goo.gl/forms/znQLp6eWKH5vCGeD3>`_ to indicate your maintenance window preferrances.
 
 .. note::
 
