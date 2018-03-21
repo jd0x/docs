@@ -119,15 +119,15 @@ The ``mutation_root`` will be as follows:
    type mutation_root {
 
      insert_author(
-       objects: [author_input]
+       objects: [author_input!]!
      ): author_mutation_response
 
      update_author(
-       where: author_bool_exp _set: author_input
+       where: author_bool_exp! _set: author_input!
      ): author_mutation_response
 
      delete_author(
-       where: author_bool_exp
+       where: author_bool_exp!
      ): author_mutation_response
 
    }
