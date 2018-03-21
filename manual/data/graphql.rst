@@ -6,7 +6,7 @@ Starting from version ``v0.15.31``, the data service supports querying over `Gra
 The following are the current limitations:
 
 1. No support for fragments.
-2. No support for introspection. However, you can fetch the GrahpQL schema at a different endpoint (just not through the introspection query). This schema can be used in various client libraries. See section abc for detailed instructions.
+2. No support for introspection. However, you can fetch the GrahpQL schema at a different endpoint (just not through the introspection query). This schema can be used in various client libraries. See :ref:`generate-schema-json` for detailed instructions.
 3. The errors may not be very informative. This is because currently the graphql query is being converted into an equivalent query in our own JSON based query language.
 
 GraphQL endpoints
@@ -181,7 +181,7 @@ Permissions
 
 Permissions that are added through the api-console are enforced for every GraphQL query. By default (unless a permission is added), only users with admin role can query/modify a table.
 
-.. _generate_schema_json:
+.. _generate-schema-json:
 
 Generating schema.json
 ----------------------
