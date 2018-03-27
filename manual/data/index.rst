@@ -11,11 +11,7 @@ tables. Permissions can then be used to authorize the access to data based on
 user roles.
 
 
-Exploring the Data APIs
------------------------
-
-The base URL for the Data microservice would be:
-``https://data.<cluster-name>.hasura-app.io``.
+**Explore the Data APIs**
 
 Use the API console to browse the various Data APIs.
 
@@ -38,7 +34,7 @@ See:
   Bulk queries <bulk>
   Linking to auth users <link-auth-users>
   Permissions and access control <permissions>
-  Relationships <relationships>
+  relationships
   data-migration
   Altering the schema <alter-schema>
   Aggregations/Views <aggregations>
@@ -47,3 +43,4 @@ See:
   Accessing postgres directly <access-postgres>
   Importing data from SQL files <import-sql>
   data-modelling
+  graphql

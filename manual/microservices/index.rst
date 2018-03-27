@@ -6,7 +6,7 @@ Hasura project microservices
 ============================
 
 A :doc:`Hasura project <../project/index>` is composed of a set of microservices.
-These include certain Hasura microservices but can also
+These include certain :doc:`Hasura microservices <hasura-microservices>` but can also
 include your own custom microservices.
 Microservices are basically the individual 'apps' that run on a :doc:`cluster <../cluster/index>`.
 
@@ -33,11 +33,13 @@ Now that you're familiar with the basic concepts of what a microservice is, See:
   :maxdepth: 1
   :titlesonly:
 
-  Adding microservices <add-microservice/index>
+  hasura-microservices
+  add-microservice/index
   debug
   logs
   exec-container
   list
   env-variables
+  change-subdomain
   communicating-between-microservices
   Connecting to Postgres from microservices <connect-postgres>

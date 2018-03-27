@@ -1,20 +1,18 @@
-.. .. meta::
-   :description: Learn how to use Hasura Users
-   :keywords: hasura, users, signup, login, email, mobile, email verification, mobile verification, password forgot, password reset, social login, google, facebook, github, linkedin
-
+.. meta::
+   :keywords: hasura_id
 
 Users & Authentication
 ======================
 
-Hasura Auth APIs let's you create, authenticate and manage user accounts on
-your Hasura project. It also let's you manage sessions and roles for users.
+Hasura Auth APIs lets you create, authenticate and manage user accounts on
+your Hasura project. It also lets you manage sessions and roles for users.
 
 Like any other authentication API, Hasura Auth has support for multiple ways to
-authenticate an user (e.g. username-based, email-based, mobile-based etc.).
+authenticate a user (e.g. username-based, email-based, mobile-based etc.).
 Hasura Auth calls each authentication method a "provider".
 
-Once a user is registered (or signed-up) on Hasura, it attaches a Hasura
-Identity or (``hasura_id``) to every user.  A Hasura identity is an integer.
+Once a user is registered (or signed-up) on Hasura, it attaches a ``Hasura
+Identity`` or (``hasura_id``) to every user.  A Hasura identity is an integer.
 You can use this value in your application to tie your application's user to
 this identity.
 
@@ -22,11 +20,7 @@ Hasura Auth APIs also has a bunch of admin APIs to perform administrative tasks
 on your user accounts.
 
 
-Exploring the Auth APIs
------------------------
-
-The base URL for the Auth microservice would be:
-``https://auth.<cluster-name>.hasura-app.io``.
+**Explore the Auth APIs**
 
 Use the API console to browse the various Auth APIs.
 
