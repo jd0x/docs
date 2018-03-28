@@ -139,7 +139,7 @@ Next, generate the routes for this microservice:
 
 Add this output to the ``conf/routes.yaml`` file.
 
-Finally use ``git commit`` and ``git push`` to deploy the configuration and microservices to the cluster.
+Finally, use ``git commit`` and ``git push`` to deploy the configuration and microservices to the cluster.
 
 That's all you need to do. If you head to ``https://adminer.<cluster-name>.hasura-app.io`` you'll see
 the familiar ``adminer`` UI.
@@ -149,7 +149,7 @@ the familiar ``adminer`` UI.
    The Hasura platform automatically creates Grade A SSL certificates using LetsEncrypt.
 
    SSL certificate creation can take a few minutes. During this time ``https://adminer.test42.hasura-app.io``
-   will not served, and you'll have to access your microservice on ``http`` instead. As soon as
+   will not be served, and you'll have to access your microservice on ``http`` instead. As soon as
    the certificate is ready, ``http://adminer.test42.hasura-app.io`` will automatically
    start redirecting to the ``https`` version.
 
