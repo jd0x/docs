@@ -1,7 +1,7 @@
 Upgrading free clusters
 ========================
 
-Currently updgrading a free cluster to a production cluster is a manual process.
+Currently updgrading a free cluster to a prod-tier cluster is a manual process.
 We are working on a more seamless experience.
 
 In the meanwhile, this guide will help you to get a new cluster and push your
@@ -14,10 +14,10 @@ cluster including data.
    This guide creates a new cluster, which means you will get a new domain.
 
 
-Create a new production cluster
+Create a new pro-tier cluster
 -------------------------------
-To upgrade your free cluster, first create a new production cluster.
-:doc:`More details <./create-production-cluster>`.
+To upgrade your free cluster, first create a new pro-tier cluster.
+:doc:`More details <./create-pro-tier-cluster>`.
 
 Copy the postgres data
 ----------------------
@@ -35,7 +35,7 @@ and untar it.
     $ hasura -c <dest> ms exec postgres -n hasura -- tar -xzf  /pg-data.tar.gz
 
 ``<source>`` is the alias for the free cluster, and ``<dest>`` is the alias for
-the new production cluster.
+the new pro-tier cluster.
 
 Copy the filestore data
 -----------------------
@@ -53,7 +53,7 @@ and untar it.
     $ hasura -c <dest> ms exec filestore -n hasura -- tar -xzf  /fs-data.tar.gz
 
 ``<source>`` is the alias for the free cluster, and ``<dest>`` is the alias for
-the new production cluster.
+the new pro-tier cluster.
 
 .. note::
 
@@ -72,7 +72,7 @@ Finally, update the secrets from the free to the new cluster.
     $ hasura -c <dest> secrets update postgres.password <postgres-password>
 
 ``<source>`` is the alias for the free cluster, and ``<dest>`` is the alias for
-the new production cluster. ``<auth-admin-password>`` and
+the new pro-tier cluster. ``<auth-admin-password>`` and
 ``<postgres-password>`` is obtained from the first command, in this step.
 
 Git push

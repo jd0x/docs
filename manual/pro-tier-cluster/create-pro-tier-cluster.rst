@@ -1,11 +1,11 @@
-Creating a production cluster
+Creating a pro-tier cluster
 =============================
 
-This section takes your over the process of creating a cluster on Hasura's Production tier.
+This section takes your over the process of creating a cluster on Hasura's Pro-tier.
 
 .. note::
 
-   Make sure you have an active billing account to create Production-tier clusters.
+   Make sure you have an active billing account to create Pro-tier clusters.
    See :doc:`here <./manage-billing>` to enable billing.
 
 

@@ -1,11 +1,12 @@
 .. .. meta::
    :description: How to modify cluster configuration
-   :keywords: hasura, cluster, paid plans, modify
+   :keywords: hasura, cluster, paid plans, modify, pro-tier
 
 Managing a cluster
 ==================
 
-Let's see how to interact with and modify production tier clusters. You need to have one or more production clusters to perform most of the following operations.
+Let's see how to interact with and modify pro-tier clusters. You need to have
+one or more pro-tier clusters to perform most of the following operations.
 
 List existing clusters
 ----------------------
@@ -48,11 +49,11 @@ Using the pricing calculator
 
 * Click the "Install using Hasura CLI" button, and copy the generated infra code.
 
-* Run the command:
+* Let's say the infra code from previous step is ZXPBVF. Run the command:
 
 .. code-block:: bash
 
-   $ hasura cluster upgrade -c <cluster-alias> --infra XXXXXX
+   $ hasura cluster upgrade -c <cluster-alias> --infra ZXPBVF
 
 
 Modifying ``clusters.yaml`` file
