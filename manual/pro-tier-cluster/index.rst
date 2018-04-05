@@ -32,4 +32,5 @@ version controlled in a Hasura project**.
   manage-pro-tier-cluster
   .. cluster-maintenance
   manage-billing
+  free-pro-migration
   reference-clusters-yaml
