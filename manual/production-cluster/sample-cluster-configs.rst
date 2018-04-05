@@ -16,7 +16,7 @@ apps), use the following cluster configuration:
 
    version: v1
    provider: digital-ocean
-   region: blr1
+   region: sfo2
    nodes:
    - type: s-1vcpu-1gb
      labels:
@@ -38,7 +38,7 @@ Single-node cluster for on-demand staging environments for simple apps
 
    version: v1
    provider: digital-ocean
-   region: blr1
+   region: sfo2
    nodes:
    - type: s-2vcpu-2gb
      labels:
@@ -60,7 +60,7 @@ your own volume for persistent microservices.
 
    version: v1
    provider: digital-ocean
-   region: blr1
+   region: sfo2
    nodes:
    - type: s-2vcpu-4gb
      labels:
@@ -86,7 +86,7 @@ volume for persistent microservices.
 
    version: v1
    provider: digital-ocean
-   region: blr1
+   region: sfo2
    nodes:
    - type: s-4vcpu-8gb
      labels:
