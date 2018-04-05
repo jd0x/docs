@@ -1,20 +1,19 @@
 .. .. meta::
-   :description: Hasura Auth mobile provider
-   :keywords: hasura, users, signup, login, mobile, verify mobile
+   :description: Hasura Auth email provider
+   :keywords: hasura, users, signup, login, email, verify email
 
 
-Mobile/Password based authentication
-====================================
+Email based authentication
+==========================
 
-This provider supports mobile/password based authentication.  The user's mobile
-is verified by sending an OTP via SMS to the user's mobile number. To use this
-provider there are extra steps to be performed to verify the user's mobile.
+This provider supports email/password based authentication.  The user's email
+is verified by sending a verification email. To use this provider there are
+extra steps to be performed to verify the user's email.
 
 .. note::
 
-  For this provider to send OTP via SMS, you have to :doc:`enable a SMS provider <../../notify/sms/index>` in
+  For this provider to send emails, you have to :doc:`enable an email provider <../../../notify/email/index>` in
   the Hasura Notify microservice.
-
 
 
 Signup
@@ -28,20 +27,19 @@ To signup a user, make a request to the signup endpoint : ``/v1/signup``.
    Content-Type: application/json
 
    {
-     "provider" : "mobile-password",
+     "provider" : "email",
      "data" : {
-        "mobile": "9876543210",
-        "country_code": "91",
+        "email": "johndoe@example.com",
         "password": "somepass123"
      }
    }
 
-If the request is successful, Hasura Auth will send a verification SMS to the
-given mobile number and will return a response with user details.
 
+If the request is successful, Hasura Auth will send a verification email to the
+given email address and will return a response with user details.
 
 This will not login the user automatically (unlike the ``username`` provider),
-because at this point the mobile verification is pending.
+because at this point the email verification is pending.
 
 The above user details will not have ``auth_token`` set.
 
@@ -54,7 +52,7 @@ Typical response of the ``/v1/signup`` request is :
 
    {
      "auth_token": null,
-     "mobile": "9876543210",
+     "email": "johndoe@example.com",
      "hasura_roles": [
        "user"
      ],
@@ -63,7 +61,7 @@ Typical response of the ``/v1/signup`` request is :
 
 
 * ``auth_token``  is the authentication token of the user for the current
-  session. This is null because at this point the mobile verification is
+  session. This is null because at this point the email verification is
   pending, hence no session is created for the user.
 
 * ``hasura_roles``  is an list of all roles assigned to the user.
@@ -71,28 +69,19 @@ Typical response of the ``/v1/signup`` request is :
 * ``hasura_id``  is the hasura identifier of the user.
 
 
-Verifying Mobile
-----------------
+Verifying Email
+---------------
 
-To verify the mobile number, Hasura Auth will send a SMS with a one time
-password or OTP to the user's mobile number, and within a configurable amount of
-time, the user has to submit the OTP to a Hasura Auth API endpoint to verify
-the mobile number.
-
-To verify the mobile number, make the following request.
+To verify the email address upon signup, Hasura Auth will send an email with a
+unique token to the user's email address. The email template can be configured
+in your project inside ``conf/auth.yaml``. The email template must include the
+complete verification link along with the ``token`` parameter.
 
 .. code-block:: http
 
-   POST auth.<cluster-name>.hasura-app.io/v1/providers/mobile-password/verify-otp HTTP/1.1
-   Content-Type: application/json
+   GET auth.<cluster-name>.hasura-app.io/v1/providers/email/verify-email?token=<token> HTTP/1.1
 
-   {
-     "mobile": "9876543210",
-     "country_code": "91",
-     "otp": "123456"
-   }
-
-The response of the mobile verification endpoint indicates success or failure.
+The response of the email verification endpoint indicates success or failure.
 If it is successful, then your application should ask the user to login.
 
 .. code-block:: http
@@ -101,12 +90,12 @@ If it is successful, then your application should ask the user to login.
    Content-Type: application/json
 
    {
-     "message" : "success"
+     "message"   : "success"
    }
 
 
 Login
-------
+-----
 
 To login a user make a request to the login endpoint: ``/v1/login``.
 
@@ -116,14 +105,12 @@ To login a user make a request to the login endpoint: ``/v1/login``.
    Content-Type: application/json
 
    {
-     "provider": "mobile-password",
-     "data": {
-        "mobile": "9876543210",
-        "country_code": "91",
+     "provider" : "email",
+     "data" : {
+        "email": "johndoe@example.com",
         "password": "somepass123"
      }
    }
-
 
 Typical response of the ``/v1/login`` request is :
 
@@ -134,7 +121,7 @@ Typical response of the ``/v1/login`` request is :
 
    {
      "auth_token": "b4b345f980ai4acua671ac7r1c37f285f8f62e29f5090306",
-     "mobile": "9876543210",
+     "email": "johndoe@example.com",
      "hasura_id": 79,
      "hasura_roles": [
          "user"
@@ -149,7 +136,7 @@ Typical response of the ``/v1/login`` request is :
 
 
 Getting user info
-------------------
+-----------------
 To get the logged in user's details, or to check if a session token is valid
 you can use this endpoint.
 
@@ -171,13 +158,12 @@ Typical response is :
 
    {
      "auth_token": "b4b345f980ai4acua671ac7r1c37f285f8f62e29f5090306",
-     "mobile": "9876543210",
+     "email": "johndoe@example.com",
      "hasura_id": 79,
      "hasura_roles": [
          "user"
      ]
    }
-
 
 * ``auth_token``  is the authentication token of the user for the current
   session.
@@ -216,7 +202,7 @@ endpoint.
      "new_password": "newpassword"
    }
 
-.. _forgot_password_mobile_password:
+.. _forgot_password_email:
 
 Forgot password / password reset
 --------------------------------
@@ -229,36 +215,41 @@ If a user has forgotten their password, it can be reset.
   can't login. For logged-in user to change their password use
   ``/v1/user/change-password`` endpoint.
 
-To reset a password first a reset OTP has to be obtained. This is done by sending
-a forgot password SMS to the user's mobile.
 
-To send a forgot password SMS make a request to
-``/v1/providers/mobile-password/forgot-password`` endpoint with the user's
-mobile number.
+To reset a password first a reset token has to be obtained. This is done by
+sending a forgot password email to the user's email address.
+
+To send a forgot password email make a request to ``/v1/providers/email/forgot-password`` endpoint
+with the user's email address.
 
 .. code-block:: http
 
-   POST auth.<cluster-name>.hasura-app.io/v1/providers/mobile-password/forgot-password HTTP/1.1
+   POST auth.<cluster-name>.hasura-app.io/v1/providers/email/forgot-password HTTP/1.1
    Content-Type: application/json
 
    {
-     "mobile" : "9876543210",
-     "country_code" : "91"
+     "email" : "johnsmith@example.com"
    }
 
-After obtaining the OTP, your application should make auth API call to
-``/v1/providers/mobile-password/reset-password`` endpoint to reset the user's password.
+This will send a reset password email with a unique, random token to the user's
+email address.
 
-The reset password endpoint takes the OTP and the new password of the user.
+You have to configure the email templates in ``conf/auth.yaml`` (in your Hasura
+project) to include a link to your application in the email content.  This link
+will include a ``token`` parameter, that your application has to retrieve.
+After obtaining the ``token``, your application should make auth API call to
+``/v1/providers/email/reset-password`` endpoint to reset the user's password.
+
+The reset password endpoint takes the ``token`` and the new password of the
+user.
 
 .. code-block:: http
 
-   POST auth.<cluster-name>.hasura-app.io/v1/providers/mobile-password/reset-password HTTP/1.1
+   POST auth.<cluster-name>.hasura-app.io/v1/providers/email/reset-password HTTP/1.1
    Content-Type: application/json
 
    {
-     "mobile" : "9876543210",
-     "country_code" : "91",
-     "otp": "1231",
+     "token": "<token-sent-in-the-email>",
      "password": "newpass123"
    }
+
