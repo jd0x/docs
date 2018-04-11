@@ -163,7 +163,7 @@ When executing a query template, the template is essentially converted into a qu
 .. _create_query_template:
 
 create_query_template
-----------------------
+---------------------
 
 ``create_query_template`` is used to template a query and attach a name to it.
 
@@ -306,7 +306,7 @@ Here's an example for an ``insert`` query.
        }
    }
 
-As mentioned above, only the objects key in a insert query is templatable. This would insert ``n`` number of articles into the ``article`` table, where ``n`` is the length of the ``article_objects`` array. 
+As mentioned above, only the objects key in a insert query is templatable. This would insert ``n`` number of articles into the ``article`` table, where ``n`` is the length of the ``article_objects`` array.
 
 Here's an example for an ``update`` query.
 

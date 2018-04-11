@@ -24,7 +24,7 @@ the enabled auth providers. Just configure the auth conf of your Hasura Project 
 
 By default, it is configured to login using only ``Username Password``. You can enable other auth providers by changing the auth conf. We will demonstrate below how to enable ``auth with Email and Google``. For enabling other providers, :ref:`read the instructions here <providers>`.
 
-Enable auth with Email
+Enable auth with email
 ----------------------
 
 #. Open the ``conf/auth.yaml`` file from the project directory. Enable email provider to by setting ``defaultProviders > email > enabled`` to *true*.
@@ -38,7 +38,7 @@ Enable auth with Email
        $ git push hasura master
 
 
-#. You will need an email service to programmatically send emails. You can either configure one of :doc:`smtp <../notify/email/smtp>` and :doc:`sparkpost <../notify/email/sparkpost>` or use the free trial service by Hasura called :doc:`Hasura Test Provider<../notify/email/hasura-test-provider>`. The ``Hasura Test Provider`` is enabled by default, so you can start using the service by running the blow commands from the project directory.
+#. You will need an email service to programmatically send emails. You can either configure one of :doc:`smtp <../notify/email/smtp>` and :doc:`sparkpost <../notify/email/sparkpost>` or use the free trial service by Hasura called :doc:`Hasura Test Provider<../notify/email/hasura-test-provider>`. The ``Hasura Test Provider`` is enabled by default, so you can start using the service by running the below commands from the project directory.
 
    .. code-block:: bash
 
@@ -48,6 +48,9 @@ Enable auth with Email
       $ hasura secret update notify.hasura.token <token>
 
 #. Navigate to ``auth.<cluster-name>.hasura-app.io/ui`` and you will see the ``auth with email`` enabled.
+
+.. note::
+    You are allowed only 10 emails per day with Hasura Test Provider. For a permanent solution, you have to configure either :doc:`smtp <../notify/email/smtp>` or :doc:`sparkpost <../notify/email/sparkpost>`.
 
 Enable auth with Google
 -----------------------
