@@ -1,18 +1,18 @@
-Querying data over GraphQL
-==========================
+GraphQL
+=======
 
-Starting from version ``v0.15.31``, the data microservice supports querying over `GraphQL <https://graphql.org/>`_ in addition to the JSON based query language (``/v1/query``). The :doc:`api-console <../api-console/index>` has `GraphiQL <https://github.com/graphql/graphiql>`_ integrated, so that is the best place for getting started with GraphQL on Hasura.
+Starting from version ``v0.15.31``, the data service supports querying over `GraphQL <https://graphql.org/>`_ in addition to the JSON based query language (``/v1/query``). The api-console has `GraphiQL <https://github.com/graphql/graphiql>`_ integrated, so that is the best place for getting started with GraphQL on Hasura.
 
 The following are the current limitations:
 
 1. No support for fragments.
 2. No support for introspection. However, you can fetch the GrahpQL schema at a different endpoint (just not through the introspection query). This schema can be used in various client libraries. See :ref:`generate-schema-json` for detailed instructions.
-3. Error messages may not point to the exact location of syntax error.
+3. The errors may not be very informative. This is because currently the graphql query is being converted into an equivalent query in our own JSON based query language.
 
 GraphQL endpoints
 -----------------
 
-The data microservice exposes the GraphQL interface at ``/v1alpha1/graphql``. So the publicly accessible URL will be ``https://data.<project-name>.hasura-app.io/v1alpha1/graphql``. It accepts a ``POST`` request as follows:
+The data serivce exposes the GraphQL interface at ``/v1alpha1/graphql``. So the publicly accessible URL will be ``https://data.<project-name>.hasura-app.io/v1alpha1/graphql``. It accepts a ``POST`` request as follows:
 
 .. code-block:: http
 
@@ -166,7 +166,7 @@ Examples:
 
      mutation {
        delete_author (
-         where: { name: {_eq: "shukra"} }
+         where: { name: {_eq: "srishti"} }
        ) {
          affected_rows
          returning {

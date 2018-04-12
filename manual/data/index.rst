@@ -45,3 +45,4 @@ See:
   Importing data from SQL files <import-sql>
   graphql
   data-modelling
+  graphql
