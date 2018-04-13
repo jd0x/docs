@@ -1,13 +1,10 @@
 Querying data over GraphQL
 ==========================
 
-Starting from version ``v0.15.31``, the data microservice supports querying over `GraphQL <https://graphql.org/>`_ in addition to the JSON based query language (``/v1/query``). The :doc:`api-console <../api-console/index>` has `GraphiQL <https://github.com/graphql/graphiql>`_ integrated, so that is the best place for getting started with GraphQL on Hasura.
-
-The following are the current limitations:
-
-1. No support for fragments.
-2. No support for introspection. However, you can fetch the GrahpQL schema at a different endpoint (just not through the introspection query). This schema can be used in various client libraries. See :ref:`generate-schema-json` for detailed instructions.
-3. Error messages may not point to the exact location of syntax error.
+Starting from version ``v0.15.31``, the data microservice supports querying over `GraphQL <https://graphql.org/>`_
+in addition to the JSON based query language (``/v1/query``). The :doc:`api-console <../api-console/index>` has
+`GraphiQL <https://github.com/graphql/graphiql>`_ integrated, so that is the best place for getting started with GraphQL
+on Hasura.
 
 GraphQL endpoints
 -----------------
@@ -18,7 +15,8 @@ The data microservice exposes the GraphQL interface at ``/v1alpha1/graphql``. So
 
    POST data.<project-name>.hasura-app.io/v1alpha1/graphql HTTP/1.1
    Content-Type: application/json
-   Authorization: Bearer <token>
+   Authorization: Bearer <auth-token> # optional if cookie is set
+   X-Hasura-Role: <role>  # optional. Required if request needs particular user role
 
    {
        "operationName" : "some-operation-name",
@@ -35,7 +33,8 @@ The schema is exposed separately at this endpoint (as introspection is not yet s
 .. code-block:: http
 
    GET data.<project-name>.hasura-app.io/v1alpha1/graphql/schema HTTP/1.1
-   Authorization: Bearer <admin-token>
+   Authorization: Bearer <auth-token> # optional if cookie is set
+   X-Hasura-Role: <role>  # optional. Required if request needs particular user role
 
 Queries and mutations
 ---------------------
@@ -189,10 +188,18 @@ As we don't yet support introspection over the graphql endpoint, the standard to
 
 .. code-block:: Bash
 
-   $ curl -H 'Authorization: Bearer <admin-token>' 'https://data.<cluster-name>.hasura-app.io/v1alpha1/graphql/schema' | jq -r '.schema' > schema.graphql
+   $ curl -H 'Authorization: Bearer <auth-token>' 'https://data.<cluster-name>.hasura-app.io/v1alpha1/graphql/schema' | jq -r '.schema' > schema.graphql
 
 Now that you have the GraphQL schema, you can generate ``schema.json`` as follows:
 
 .. code-block:: Bash
 
    $ apollo-codegen introspect-schema schema.graphql --output schema.json
+
+Current limitations
+-------------------
+
+1. No support for fragments.
+2. No support for introspection. However, you can fetch the GrahpQL schema at a different endpoint (just not through the introspection query). This schema can be used in various client libraries. See :ref:`generate-schema-json` for detailed instructions.
+3. Error messages may not point to the exact location of syntax error.
+

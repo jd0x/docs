@@ -1,5 +1,5 @@
 .. .. meta::
-   :description: Hasura Auth user sessions 
+   :description: Hasura Auth user sessions
    :keywords: hasura, users, sessions
 
 
@@ -22,9 +22,11 @@ session middleware for all microservices.
 
 When the gateway receives a request, it looks for a session auth token in the
 ``Bearer`` token of the ``Authorization`` header or in the ``cookie``. It then
-retrieves the user hasura_id and roles attached to this session token from the
+retrieves the user ``hasura_id`` and roles attached to this user from the
 session store. This information is sent as ``X-Hasura-User-Id`` and
 ``X-Hasura-Role`` headers to the upstream microservice.
+If the ``X-Hasura-Role`` header is passed with the request, its value is passed to the upstream service if the
+user has that particular role or else the request is rejected with a ``403 Forbidden`` response.
 
 When the session token is absent from both the Authorization header and cookie, the gateway
 considers it as an ``anonymous`` request and adds the header ``X-Hasura-Role:

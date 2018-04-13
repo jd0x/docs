@@ -2,7 +2,7 @@ Enabling/disabling authentication methods
 =========================================
 
 All the configuration related to the authentication methods a.k.a providers,
-is present in :doc:`conf/auth.yaml <../../../project/directory-structure/conf/auth.yaml>` file in your project drectory. The default
+is present in :doc:`conf/auth.yaml <../../project/directory-structure/conf/auth.yaml>` file in your project drectory. The default
 providers of ``auth.yaml`` look something like the snippet below:
 
 .. snippet:: yaml
@@ -75,9 +75,6 @@ If you make any change in the ``auth.yaml``, you must run a git push to apply th
   $ git commit -m "Changed auth configuration"
   $ git push hasura master
 
-Additional configuration
-------------------------
-
 Most auth providers might require further configuration for use cases such as
 
 - Changing email verification template
@@ -86,12 +83,12 @@ Most auth providers might require further configuration for use cases such as
 - Changing OTP expiry time
 - Configuring client IDs and client secrets for social auth providers.
 
-For more details on configuring auth providers, check:
+To learn about configuring auth providers, check:
 
-- :doc:`Email <email>`
-- :doc:`Mobile/OTP <mobile-otp>`
-- :doc:`Mobile/password <mobile-password>`
-- :doc:`Google <google>`
-- :doc:`Facebook <facebook>`
-- :doc:`Github <github>`
-- :doc:`LinkedIn <linkedin>`
+- :doc:`Email <providers/email>`
+- :doc:`Mobile/OTP <providers/mobile-otp>`
+- :doc:`Mobile/password <providers/mobile-password>`
+- :doc:`Google <providers/google>`
+- :doc:`Facebook <providers/facebook>`
+- :doc:`Github <providers/github>`
+- :doc:`LinkedIn <providers/linkedin>`

@@ -6,14 +6,19 @@
 Data API Reference: Permissions
 ===============================
 
-The permission layer is designed to restrict the operations that can be performed by various users. Permissions can be defined on various operations (insert/select/update/delete) at a role level granularity. By default, the admin role has unrestricted access to all operations.
+The permission layer is designed to restrict the operations that can be performed by various users. Permissions can be defined
+on various operations (insert/select/update/delete) at a role level granularity. By default, the admin role has unrestricted
+access to all operations.
+
 
 .. note::
 
-   The hasura API gateway forwards ``X-Hasura-*`` headers with each request to the data microservice. So, when a data
-   API call is made with an ``auth_token`` representing some user, the data microservice knows the user's roles and a
-   variable called ``X-HASURA-USER-ID`` is updated with the ``hasura_id`` of the user making the call. This variable can now
-   be used to describe the access permissions for rows in tables.
+   The hasura ``API gateway`` forwards ``X-Hasura-*`` headers with each request to the ``data`` microservice. So, when an API
+   call is made with an ``auth_token`` representing some user, a variable called ``X-Hasura-User-Id`` is updated with the
+   ``hasura_id`` of the user and a variable called ``X-Hasura-Role`` is updated with the role of the user making the call.
+   These variables can now be used to describe the access permissions for rows in tables. If the ``X-Hasura-Role`` header is
+   passed with the request, its value is passed to the ``data`` microservice if the user has that
+   particular role or else the request is rejected with a ``403 Forbidden`` response.
 
 .. _create_insert_permission:
 
@@ -28,7 +33,8 @@ Let's look at an example, a permission for the ``user`` role to insert into ``ar
 
    POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
    Content-Type: application/json
-   Authorization: <admin-token>
+   Authorization: Bearer <auth-token> # optional if cookie is set
+   X-Hasura-Role: <role>  # optional. Required if request needs particular user role
 
    {
        "type" : "create_insert_permission",
@@ -55,7 +61,8 @@ The argument for ``check`` is a boolean expression which has the same syntax as 
 
    POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
    Content-Type: application/json
-   Authorization: <admin-token>
+   Authorization: Bearer <auth-token> # optional if cookie is set
+   X-Hasura-Role: <role>  # optional. Required if request needs particular user role
 
    {
        "type" : "create_insert_permission",
@@ -164,7 +171,8 @@ Let's look at an example, a permission for the ``user`` role to select from ``ar
 
    POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
    Content-Type: application/json
-   Authorization: <admin-token>
+   Authorization: Bearer <auth-token> # optional if cookie is set
+   X-Hasura-Role: <role>  # optional. Required if request needs particular user role
 
    {
        "type" : "create_select_permission",
@@ -276,7 +284,8 @@ An example:
 
    POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
    Content-Type: application/json
-   Authorization: <admin-token>
+   Authorization: Bearer <auth-token> # optional if cookie is set
+   X-Hasura-Role: <role>  # optional. Required if request needs particular user role
 
    {
        "type" : "create_update_permission",
@@ -387,7 +396,8 @@ An example:
 
    POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
    Content-Type: application/json
-   Authorization: <admin-token>
+   Authorization: Bearer <auth-token> # optional if cookie is set
+   X-Hasura-Role: <role>  # optional. Required if request needs particular user role
 
    {
        "type" : "create_delete_permission",
@@ -489,7 +499,8 @@ An example:
 
    POST /v1/query HTTP/1.1
    Content-Type: application/json
-   Authorization: Bearer <admin-token>
+   Authorization: Bearer <auth-token> # optional if cookie is set
+   X-Hasura-Role: <role>  # optional. Required if request needs particular user role
 
    {
        "type": "set_permission_comment",
