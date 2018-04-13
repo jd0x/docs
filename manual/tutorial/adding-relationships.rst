@@ -1,10 +1,5 @@
-.. .. meta::
-   :description: Part 2 of a set of learning exercises meant for exploring Hasura in detail. This part introduces the Auth microservice's User & Session management model.
-   :keywords: hasura, getting started, step 2
-
-===========================================
-Part X: Adding relationships to data models
-===========================================
+Part VIII: Adding relationships to data models
+==============================================
 
 Exploiting relationships in your data
 -------------------------------------
@@ -136,7 +131,7 @@ Let's say you wish to add an object relationship for ``article(author_id) -> aut
 
 You'll see an entry in *suggested object relationships*:
 
-.. image:: ../../img/complete-tutorial/tutorial-10-new-rel-article.png
+.. image:: ../../img/complete-tutorial/tutorial-suggested-relationships.png
 
 Click on *Add* to add a new object relationship and name the relationship:
 
