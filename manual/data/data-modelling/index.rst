@@ -5,10 +5,8 @@ Data Modelling
 .. toctree::
   :maxdepth: 1
 
-  permissions
   adding-foreign-key-constraint
-  relationships
-  creating-views
-  adding-not-null-constraint
-  adding-unique-constraint
-  query-templates
+  one-to-many
+  many-to-one
+  many-to-many
+  one-to-one

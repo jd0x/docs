@@ -44,4 +44,4 @@ See:
   Accessing postgres directly <access-postgres>
   Importing data from SQL files <import-sql>
   graphql
-  data-modelling
+  data-modelling/index
