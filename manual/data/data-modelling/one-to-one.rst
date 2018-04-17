@@ -57,7 +57,7 @@ To create a one-to-one relationship, we will add a uniqueness constraint over a 
    #. Check the ``This is a migration`` checkbox so that a :doc:`migration <../data-migration>` is created in the ``/migrations`` directory.
    #. Hit ``Run``.
 
-#. Similarly create a :ref:`object relationship <manual-obj-relationship>` relationship from ``person`` to ``voter``.
+#. Create an :doc:`object relationship <../../api-reference/data/query/relationship>` from ``person`` to ``voter``.
 
    #. Go to the ``API-Explorer`` section.
    #. Choose ``JSON Raw`` on the left panel.
@@ -87,7 +87,7 @@ To create a one-to-one relationship, we will add a uniqueness constraint over a 
             }
         }
 
-#. Create a :ref:`object relationship <manual-obj-relationship>` relationship from ``voter`` to ``person``.
+#. Similarly create an :doc:`object relationship <../../api-reference/data/query/relationship>` from ``voter`` to ``person``.
 
    #. Go to the ``API-Explorer`` section.
    #. Choose ``JSON Raw`` on the left panel.

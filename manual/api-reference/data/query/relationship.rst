@@ -86,7 +86,7 @@ There are 2 ways in which you can create an object relationship.
 
 You can look at :ref:`this <obj_rel_example>` example.
 
-:: _manual-obj-relationship:
+.. _manual_obj_relationship:
 
 2. Manual configuration
 ^^^^^^^^^^^^^^^^^^^^^^^
