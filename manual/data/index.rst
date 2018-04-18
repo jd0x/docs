@@ -8,7 +8,7 @@ Hasura Database
 
 Hasura comes with data APIs which run on top of a **Postgres database** to store and retrieve data.
 
-To fetch associated data with ease, one can define :doc:`relationships <relationships>` on
+To fetch associated data with ease, one can define :doc:`relationships <relationships/index>` on
 tables. To authorize the access to data, :doc:`permissions <permissions>` can be added based on
 user roles.
 
@@ -35,13 +35,13 @@ See:
   Bulk queries <bulk>
   Linking to auth users <link-auth-users>
   Permissions and access control <permissions>
-  relationships
+  Data Relationships <relationships/index>
   data-migration
   Altering the schema <alter-schema/index>
-  Aggregations/Views <aggregations>
+  Aggregations and Views <aggregations>
   reset
   Running SQL commands <run-sql>
   Accessing postgres directly <access-postgres>
   Importing data from SQL files <import-sql>
   graphql
-  data-modelling
+  data-modelling/index
