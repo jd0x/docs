@@ -24,12 +24,12 @@ The full syntax of an ``insert`` query can be found :ref:`here <data_insert>`.
    .. tab:: JSON API
 
       .. code-block:: http
-         :emphasize-lines: 13
+         :emphasize-lines: 14
 
          POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
          Content-Type: application/json
          Authorization: Bearer <auth-token> # optional if cookie is set
-         X-Hasura-Role: <role>  # optional. Required if request needs particular user role
+         X-Hasura-Role: <role>  # optional. Required if only specific user role has access
 
          {
              "type":"insert",
@@ -43,5 +43,6 @@ The full syntax of an ``insert`` query can be found :ref:`here <data_insert>`.
              }
          }
 
-Note the ``returning`` key. We would like to get back the auto incremented id for each inserted row along with the title in the response. The ``returning`` key is optional.
+Note the ``returning`` key. We would like to get back the id assigned for each inserted row along with the title
+in the response. The ``returning`` key is optional.
 
