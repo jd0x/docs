@@ -81,7 +81,7 @@ To insert data into the ``user`` table, you have to execute an :doc:`insert quer
          POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
          Content-Type: application/json
          Authorization: Bearer <auth-token> # optional if cookie is set
-         X-Hasura-Role: <role>  # optional. Required if only specific user role has access
+         X-Hasura-Role: <role>  # optional. Pass if only specific user role has access
 
          {
            "type": "insert",
@@ -126,7 +126,7 @@ This will create a view called ``user_address`` with ``user_id``, ``city`` and `
 
 We can now :doc:`fetch data <../select>` from this view just like you would from a table.
 
-Moreover, you can also :ref:`create a manual relationship <relationship_without_fkey>` to this view from your user table on the `user_id` column.
+Moreover, you can also :def:`create a manual relationship <../relationships/create-relationships>` to this view from your user table on the `user_id` column.
 
 - Relationship Type will be ``Object Relationship``
 - Relationship Name can be "address_info"
@@ -159,7 +159,7 @@ You can now filter the ``user`` table by city or pincode
          POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
          Content-Type: application/json
          Authorization: Bearer <auth-token> # optional if cookie is set
-         X-Hasura-Role: <role>  # optional. Required if only specific user role has access
+         X-Hasura-Role: <role>  # optional. Pass if only specific user role has access
 
          {
             "type": "select",
