@@ -46,9 +46,8 @@ The Postgres database runs as a microservice on a Hasura cluster. You can direct
          $ hasura ms exec postgres -n hasura -ti -- /bin/bash
          root@postgres-3391217220-6jbq7:/$ # You can now run psql, pg_dump and other commands
 
-   .. tab:: From microservice
 
-      See: :doc:`../microservices/connect-postgres`
+If you are trying to connect to postgres from a custom microservice, see: :doc:`../microservices/connect-postgres`.
 
 .. ..todo::
    * Describe postgres, data API, and API gateway architecture

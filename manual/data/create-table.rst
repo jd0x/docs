@@ -30,7 +30,7 @@ To add/create a new table in the database, the following options are available:
 
    .. tab:: SQL
 
-      You can also create tables using SQL by heading to ``Data > SQL`` section in the API console.
+      You can create tables using SQL by heading to ``Data > SQL`` section in the API console.
 
       .. image:: ../../img/manual/data/run_sql.png
 
