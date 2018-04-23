@@ -5,9 +5,9 @@ import template
 PAT_RST_SECTION = re.compile(r'(.*)\n((?:^----+$)|(?:^====+$)|(?:^~~~~+$)|(?:^````+$))', re.M)
 # List of tuples with language tab ( ID, Display Name)
 LANGUAGES_RAW = [
-    ('linux', 'Linux'),
-    ('mac', 'Mac'),
-    ('windows', 'Windows')
+    ('api-console', "API-Console"),
+    ('sql', 'SQL'),
+    ('rest', "REST API")
     # ('shell', 'Shell'),
     # ('python', 'Python'),
     # ('nodejs', 'Nodejs'),
@@ -127,8 +127,8 @@ def setup(app):
     directive = template.create_directive('h4', H4_TEMPLATE, template.BUILT_IN_PATH, True)
     app.add_directive('h4', directive)
 
-    directive = template.create_directive('tabs_custom', TABS_TEMPLATE, template.BUILT_IN_PATH, True)
-    app.add_directive('tabs_custom', directive)
+    directive = template.create_directive('tabs_new', TABS_TEMPLATE, template.BUILT_IN_PATH, True)
+    app.add_directive('tabs_new', directive)
 
     directive = template.create_directive('tabs-gs', TABSGS_TEMPLATE, template.BUILT_IN_PATH, True)
     app.add_directive('tabs-gs', directive)

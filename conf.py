@@ -100,6 +100,7 @@ extensions = [
     "sphinx.ext.todo",
     "tabs",
     "sphinx_tabs.tabs",
+    "tabs_new"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
