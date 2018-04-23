@@ -3,7 +3,6 @@ Removing roles from users
 
 Roles can be removed from users. This can only be done by an admin user.
 
-
 .. rst-class:: api_tabs
 .. tabs::
 
