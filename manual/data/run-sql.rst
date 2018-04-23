@@ -13,43 +13,47 @@ If you want to run SQL statements directly on the database, this can be done in 
    Currently, renaming of tables and columns are not allowed using SQL statements.
 
 
-**1. Using the console UI - SQL page**
+.. rst-class:: api_tabs
+.. tabs::
 
-First launch the API console:
+   .. tab:: API-Console
 
-.. code-block:: bash
+      First launch the API console:
 
-   $ hasura api-console
+      .. code-block:: bash
 
-Head to ``Data > SQL`` section in the console.
+         $ hasura api-console
 
-.. image:: ../../img/manual/data/alter-column-sql.png
+      Head to ``Data > SQL`` section in the console.
 
-.. note::
-   You should click on ``This is a migration`` option before executing the query if you want to retain the query as a db migration.
+      .. image:: ../../img/manual/data/alter-column-sql.png
 
-**2. Using the API:**
+      .. note::
+         You should click on ``This is a migration`` option before executing the query if you want to retain the query as a db migration.
 
-The ``run_sql`` endpoint of the Data microservice can be used to run SQL
-statements directly on the data.
 
-``run_sql`` is used to run arbitrary SQL statements. Multiple SQL statements can be separated by a ``;``, however, only the result of the last sql statement will be returned.
+   .. tab:: REST API
 
-An example:
+      The ``run_sql`` endpoint of the Data microservice can be used to run SQL
+      statements directly on the data.
 
-.. code-block:: http
+      ``run_sql`` is used to run arbitrary SQL statements. Multiple SQL statements can be separated by a ``;``, however, only the result of the last sql statement will be returned.
 
-   POST /v1/query HTTP/1.1
-   Content-Type: application/json
-   Authorization: Bearer <auth-token> # optional if cookie is set
-   X-Hasura-Role: admin
+      An example:
 
-   {
-       "type": "run_sql",
-       "args": {
-           "sql": "CREATE UNIQUE INDEX ON films (title);"
-       }
-   }
+      .. code-block:: http
+
+         POST /v1/query HTTP/1.1
+         Content-Type: application/json
+         Authorization: Bearer <auth-token> # optional if cookie is set
+         X-Hasura-Role: admin
+
+         {
+             "type": "run_sql",
+             "args": {
+                 "sql": "CREATE UNIQUE INDEX ON films (title);"
+             }
+         }
 
 While ``run_sql`` lets you run any SQL, it tries to ensure that the data microservice's state (relationships, permissions etc.) is consistent. i.e, you cannot drop a column on which any metadata is dependent on (say a permission or a relationship). The effects however can be cascaded.
 
