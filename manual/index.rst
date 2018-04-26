@@ -33,6 +33,7 @@ This is the reference documentation of the entire Hasura platform.
   architecture/index
   billing/index
   Moving to v0.15 (old Hasura users) <migration-v0_15/index>
+  graphql/index
 
 ..
   ..monitoring-logging/index
