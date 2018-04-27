@@ -8,4 +8,4 @@ However, proxying Hasura GraphQL with a custom microservice is not recommended d
 
 1. All the customization can be implemented within Postgres as views if the data-modelling is apt. Check :ref:`data-modelling guide <data-modelling>` for more about data-modelling.
 2. You will have to rewrite the access control layer for your microservice which is already implemented in Hasura GraphQL.
-3. You have write more code when you don't need to.
+3. You have to write more code when you don't need to.

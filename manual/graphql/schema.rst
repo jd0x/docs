@@ -18,6 +18,11 @@ To get your GraphQL schema:
 
       https://data.<cluster-name>.hasura-app.io/v1alpha1/graphql/schema
 
+4. Hit send
+
+   .. image:: img/graphql-get-schema.png
+
+
 Using the community tooling around the schema
 ---------------------------------------------
 
