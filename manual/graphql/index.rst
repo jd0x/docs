@@ -1,6 +1,6 @@
-==============
-Hasura GraphQL
-==============
+=======
+GraphQL
+=======
 
 This section assumes that you have a Hasura project and a Hasura cluster. If not, head to :ref:`getting-started <getting-started>`.
 
@@ -19,7 +19,7 @@ Quick overview
 
 3. Linking the two tables and getting GraphQL APIs over them:
 
-   - :ref:`Create a relationships <create-relationships>` between the two tables.
+   - :ref:`Create a relationship <data-create-relationships>` between the two tables.
    - GraphQL APIs over the relationship are ready. You can start :ref:`fetching <data-fetching-relationship>` over them.
 
 4. Access control for your tables:

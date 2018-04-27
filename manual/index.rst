@@ -23,6 +23,7 @@ This is the reference documentation of the entire Hasura platform.
   API Console <api-console/index>
   Auth <auth/index>
   Database <data/index>
+  graphql/index
   Filestore <filestore/index>
   Notify (Sending emails/SMS) <notify/index>
   API gateway <gateway/index>
@@ -33,7 +34,6 @@ This is the reference documentation of the entire Hasura platform.
   architecture/index
   billing/index
   Moving to v0.15 (old Hasura users) <migration-v0_15/index>
-  graphql/index
 
 ..
   ..monitoring-logging/index
