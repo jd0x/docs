@@ -1359,6 +1359,10 @@ ol, ul
   font-family: 'Gudea';
 }
 
+#feedback_box {
+  max-width: 100%;
+}
+
 @media (max-width: 768px) {
   .input_search_box {
     width: 90%;
