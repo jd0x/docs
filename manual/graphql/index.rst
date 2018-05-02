@@ -40,4 +40,4 @@ Next, see:
 
     Your GraphQL schema <schema>
     Custom Resolvers <resolvers>
-    schema-stitching
+    Schema Stitching <schema-stitching>
