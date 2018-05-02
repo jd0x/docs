@@ -31,7 +31,7 @@ To obtain the **author**'s name from the article table, we issue,
          POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
          Content-Type: application/json
          Authorization: Bearer <auth-token> # optional if cookie is set
-         X-Hasura-Role: <role>  # optional. Required if only specific user role has access
+         X-Hasura-Role: <role>  # optional. Pass if only specific user role has access
 
          {
              "type" : "select",
@@ -75,7 +75,7 @@ The same syntax can be used to obtain the titles of all articles across all **au
          POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
          Content-Type: application/json
          Authorization: Bearer <auth-token> # optional if cookie is set
-         X-Hasura-Role: <role>  # optional. Required if only specific user role has access
+         X-Hasura-Role: <role>  # optional. Pass if only specific user role has access
 
          {
              "type" : "select",
@@ -121,7 +121,7 @@ author with name ``Warren`` , we could :
          POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
          Content-Type: application/json
          Authorization: Bearer <auth-token> # optional if cookie is set
-         X-Hasura-Role: <role>  # optional. Required if only specific user role has access
+         X-Hasura-Role: <role>  # optional. Pass if only specific user role has access
 
          {
              "type" : "select",
@@ -160,7 +160,7 @@ Let's fetch authors who have never published anything.
          POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
          Content-Type: application/json
          Authorization: Bearer <auth-token> # optional if cookie is set
-         X-Hasura-Role: <role>  # optional. Required if only specific user role has access
+         X-Hasura-Role: <role>  # optional. Pass if only specific user role has access
 
          {
              "type" : "select",
@@ -207,7 +207,7 @@ and the author who posted the comment.
          POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
          Content-Type: application/json
          Authorization: Bearer <auth-token> # optional if cookie is set
-         X-Hasura-Role: <role>  # optional. Required if only specific user role has access
+         X-Hasura-Role: <role>  # optional. Pass if only specific user role has access
 
          {
              "type" : "select",
@@ -260,7 +260,7 @@ only their published articles:
          POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
          Content-Type: application/json
          Authorization: Bearer <auth-token> # optional if cookie is set
-         X-Hasura-Role: <role>  # optional. Required if only specific user role has access
+         X-Hasura-Role: <role>  # optional. Pass if only specific user role has access
 
          {
              "type" : "select",

@@ -6,12 +6,12 @@ To make multiple queries as a part of the same request you can send them as part
 To select from multiple tables in the same request, make a ``bulk`` query as follows
 
 .. code-block:: http
-   :emphasize-lines: 7,22
+   :emphasize-lines: 8,23
 
    POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
    Content-Type: application/json
    Authorization: Bearer <auth-token> # optional if cookie is set
-   X-Hasura-Role: <role>  # optional. Required if only specific user role has access
+   X-Hasura-Role: <role>  # optional. Pass if only specific user role has access
 
    {
        "type": "bulk",
@@ -38,12 +38,12 @@ The response of the above query will be an array of two elements with the first 
 A sample response will look like below
 
 .. code-block:: http
-   :emphasize-lines: 13
+   :emphasize-lines: 14
 
    POST data.<cluster-name>.hasura-app.io/v1/query HTTP/1.1
    Content-Type: application/json
    Authorization: Bearer <auth-token> # optional if cookie is set
-   X-Hasura-Role: <role>  # optional. Required if only specific user role has access
+   X-Hasura-Role: <role>  # optional. Pass if only specific user role has access
 
    [
        [{
