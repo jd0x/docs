@@ -17,7 +17,8 @@ To get your GraphQL schema:
 
    .. code-block:: http
 
-      https://data.<cluster-name>.hasura-app.io/v1alpha1/graphql/schema
+      GET https://data.<cluster-name>.hasura-app.io/v1alpha1/graphql/schema HTTP/1.1
+      Authorization: Bearer <token>
 
 4. Hit send
 
