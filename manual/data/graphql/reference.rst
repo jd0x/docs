@@ -1,10 +1,7 @@
-Querying data over GraphQL
-==========================
+.. _data-graphql:
 
-Starting from version ``v0.15.31``, the data microservice supports querying over `GraphQL <https://graphql.org/>`_
-in addition to the JSON based query language (``/v1/query``). The :doc:`api-console <../api-console/index>` has
-`GraphiQL <https://github.com/graphql/graphiql>`_ integrated, so that is the best place for getting started with
-GraphQL on Hasura.
+GraphQL API reference
+=====================
 
 GraphQL endpoints
 -----------------
@@ -213,4 +210,3 @@ Current limitations
    the introspection query). This schema can be used in various client libraries. See :ref:`generate-schema-json` for
    detailed instructions.
 3. Error messages may not point to the exact location of syntax error.
-
